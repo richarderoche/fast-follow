@@ -1,9 +1,13 @@
 :root {
   --black-oklch: 0 0 0;
-  --gray-900-oklch: 0.25 0 0;
-  --gray-200-oklch: 0.9 0 0;
+  --gray-900-oklch: 0.1941 0.0165 302;
+  --gray-800-oklch: 0.3356 0.0161 300.72;
+  --gray-750-oklch: 0.4669 0.0247 300.64;
+  --gray-700-oklch: 0.5478 0.0157 299.55;
+  --gray-500-oklch: 0.6504 0.0168 302.4;
+  --gray-300-oklch: 0.719 0.0163 302.45;
+  --gray-100-oklch: 0.9346 0.0166 301.21;
   --white-oklch: 1 0 0;
-  --accent-oklch: 0.6132 0.2078 267.2;
 }
 
 .dark-theme {
@@ -11,8 +15,10 @@
   --theme-bg-subtle: oklch(var(--gray-900-oklch));
 
   --theme-body: oklch(var(--white-oklch));
+  --theme-display-subtle: oklch(var(--gray-750-oklch));
+  --theme-body-subtle: oklch(var(--gray-500-oklch));
 
-  --theme-divider: oklch(var(--accent-oklch));
+  --theme-divider: oklch(var(--gray-500-oklch));
 
   --theme-current-bg: var(--theme-bg);
   .bg-bg-subtle {
@@ -22,11 +28,13 @@
 
 .light-theme {
   --theme-bg: oklch(var(--white-oklch));
-  --theme-bg-subtle: oklch(var(--gray-200-oklch));
+  --theme-bg-subtle: oklch(var(--gray-100-oklch));
 
   --theme-body: oklch(var(--black-oklch));
+  --theme-display-subtle: oklch(var(--gray-300-oklch));
+  --theme-body-subtle: oklch(var(--gray-500-oklch));
 
-  /* --theme-divider: oklch(var(--accent-oklch)); */
+  /* --theme-divider: oklch(var(--gray-500-oklch)); */
 
   --theme-current-bg: var(--theme-bg);
   .bg-bg-subtle {
@@ -37,15 +45,22 @@
 @theme {
   --color-black: oklch(var(--black-oklch));
   --color-gray-900: oklch(var(--gray-900-oklch));
-  --color-gray-200: oklch(var(--gray-200-oklch));
+  --color-gray-800: oklch(var(--gray-800-oklch));
+  --color-gray-750: oklch(var(--gray-750-oklch));
+  --color-gray-700: oklch(var(--gray-700-oklch));
+  --color-gray-500: oklch(var(--gray-500-oklch));
+  --color-gray-300: oklch(var(--gray-300-oklch));
+  --color-gray-100: oklch(var(--gray-100-oklch));
   --color-white: oklch(var(--white-oklch));
-  --color-accent: oklch(var(--accent-oklch));
+  --color-accent: oklch(var(--gray-750-oklch));
 }
 
 @theme inline {
   --color-bg: var(--theme-bg);
   --color-bg-subtle: var(--theme-bg-subtle);
   --color-body: var(--theme-body);
+  --color-display-subtle: var(--theme-display-subtle);
+  --color-body-subtle: var(--theme-body-subtle);
   --color-divider: var(--theme-divider);
   --color-current-bg: var(--theme-current-bg);
 }
@@ -54,4 +69,23 @@ body,
 .dark-theme:not(.theme-vars-only),
 .light-theme:not(.theme-vars-only) {
   @apply bg-bg text-body;
+}
+
+.rte-subtle {
+  .ts-h1,
+  .ts-h2,
+  .ts-h3,
+  .ts-h4 {
+    @apply text-display-subtle;
+  }
+
+  .ts-h5,
+  .ts-h6,
+  .ts-p-xl,
+  .ts-p-lg,
+  .ts-p-md,
+  .ts-p-sm,
+  .ts-p-xs {
+    @apply text-body-subtle;
+  }
 }

@@ -69,23 +69,17 @@ export const viewport: Viewport = {
 const sansFont = localFont({
   src: [
     {
-      path: '../public/fonts/PPMori-Regular.woff2',
+      path: '../public/fonts/Avantt-s0w350.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../public/fonts/PPMori-RegularItalic.woff2',
-      weight: '400',
-      style: 'italic',
-    },
-    {
-      path: '../public/fonts/PPMori-Bold.woff2',
+      path: '../public/fonts/Avantt-Bold.woff2',
       weight: '600',
       style: 'normal',
     },
   ],
-  display: 'swap', // or replace with preload: true
-  variable: '--mori',
+  variable: '--avantt',
 })
 
 export default async function RootLayout({
@@ -98,10 +92,10 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sansFont.variable} light-theme`}
+      className={`${sansFont.variable} dark-theme`}
       data-scroll-behavior="smooth"
     >
-      <body>
+      <body className="font-sans font-features-['ss01']">
         <Lenis />
         <GSAP />
         <div className="flex min-h-screen flex-col justify-start ts-p-md">

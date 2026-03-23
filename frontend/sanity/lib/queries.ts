@@ -125,8 +125,6 @@ export const pagesBySlugQuery = defineQuery(`
 export const projectBySlugQuery = defineQuery(`
   *[_type == "project" && slug.current == $slug][0] {
     ...,
-    "slug": slug.current,
-    ${seo},
   }
 `)
 
@@ -155,15 +153,5 @@ export const scriptsQuery = defineQuery(`
   *[_type == "settings"][0]{
     "gtmId": googletagmanagerID,
     customScripts,
-  }
-`)
-
-export const redirectsQuery = defineQuery(`
-  *[_type == "redirect" &&
-    !(_id in path("drafts.**"))
-  ] {
-    'source': fromPath,
-    'destination': toPath,
-    permanent,
   }
 `)

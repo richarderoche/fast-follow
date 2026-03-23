@@ -46,11 +46,11 @@ export default function StyleGuide() {
           </div>
           <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-2 gap-4 mt-gut-200">
             {ColorSwatches.map((swatch) => (
-              <div key={swatch.name} className="aspect-square">
+              <div key={swatch.name} className="aspect-video">
                 <div
                   className={cn(
                     swatch.style,
-                    'flex items-center justify-center aspect-square border border-divider rounded-sm'
+                    'flex items-center justify-center h-full border border-divider rounded-sm'
                   )}
                 >
                   <span className="ts-p-xs font-medium">{swatch.name}</span>
@@ -81,16 +81,24 @@ const hStyles = [
     style: 'ts-h3',
   },
   {
+    name: 'H3 Caps',
+    style: 'ts-h3-caps',
+  },
+  {
     name: 'H4 Heading',
     style: 'ts-h4',
   },
   {
-    name: 'H5 Label',
+    name: 'H5 Button',
     style: 'ts-h5',
   },
   {
-    name: 'H6 Label',
+    name: 'H6 Heading',
     style: 'ts-h6',
+  },
+  {
+    name: 'Count 123',
+    style: 'ts-count',
   },
 ]
 
@@ -127,15 +135,31 @@ const ColorSwatches = [
     style: 'bg-gray-900 text-white',
   },
   {
-    name: 'Gray 200',
-    style: 'bg-gray-200',
+    name: 'Gray 800',
+    style: 'bg-gray-800 text-white',
+  },
+  {
+    name: 'Gray 750',
+    style: 'bg-gray-750 text-white',
+  },
+  {
+    name: 'Gray 700',
+    style: 'bg-gray-700 text-white',
+  },
+  {
+    name: 'Gray 500',
+    style: 'bg-gray-500 text-white',
+  },
+  {
+    name: 'Gray 300',
+    style: 'bg-gray-300 text-black',
+  },
+  {
+    name: 'Gray 100',
+    style: 'bg-gray-100 text-black',
   },
   {
     name: 'White',
-    style: 'bg-white',
-  },
-  {
-    name: 'Accent',
-    style: 'bg-accent',
+    style: 'bg-white text-black',
   },
 ]

@@ -11,7 +11,6 @@ export default defineType({
       marks: {
         decorators: [
           { title: 'Strong', value: 'strong' },
-          { title: 'Emphasis', value: 'em' },
         ],
         annotations: [
           {

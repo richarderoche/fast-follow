@@ -1,61 +1,69 @@
 @theme inline {
-  --font-sans: var(--mori), 'Helvetica Neue', helvetica, sans-serif;
+  --font-sans: var(--avantt), 'Helvetica Neue', helvetica, sans-serif;
 }
 
 /*
 Use ts-size utility to set font size as proportion of gut size.
-Example: ts-size-24/36 → font-size = var(--gut) × (24÷36)
+Example: ts-size-24/32 → font-size = var(--gut) × (24÷36)
 */
 
 /* Headings */
 .ts-h1 {
-  @apply leading-110 -tracking-2 font-bold ts-size-40/18 lg:ts-size-70/36;
+  @apply leading-none -tracking-3 font-bold ts-size-51/20 lg:ts-size-102/32;
 }
 
 .ts-h2 {
-  @apply leading-110 -tracking-2 font-bold ts-size-32/18 lg:ts-size-56/36;
+  @apply leading-110 -tracking-1 font-bold ts-size-34/20 lg:ts-size-56/32;
 }
 
 .ts-h3 {
-  @apply leading-110 -tracking-2 font-bold ts-size-26/18 lg:ts-size-43/36;
+  @apply leading-120 font-bold ts-size-24/20 lg:ts-size-32/32;
+}
+
+.ts-h3-caps {
+  @apply uppercase font-features-['titl'] leading-none tracking-2 font-bold ts-size-24/20 lg:ts-size-32/32;
 }
 
 .ts-h4 {
-  @apply leading-110 -tracking-2 font-bold ts-size-20/18 lg:ts-size-32/36;
+  @apply leading-120 font-bold ts-size-20/20 lg:ts-size-24/32;
 }
 
-/* Labels */
 .ts-h5 {
-  @apply uppercase leading-none tracking-5 font-bold ts-size-16/18 lg:ts-size-20/36;
+  @apply uppercase font-features-['titl'] leading-none font-bold ts-size-18/20 lg:ts-size-22/32;
 }
 
 .ts-h6 {
-  @apply uppercase leading-none tracking-5 font-bold ts-size-10/18 lg:ts-size-12/36;
+  @apply leading-130 tracking-1 font-bold ts-size-16/20 lg:ts-size-20/32;
 }
 
 /* Paragraphs */
 
 .ts-p-xl {
-  @apply leading-130 ts-size-19/18 lg:ts-size-26/36;
+  @apply leading-130 -tracking-1 ts-size-24/20 lg:ts-size-32/32;
 }
 
 .ts-p-lg {
-  @apply leading-130 ts-size-17/18 lg:ts-size-22/36;
+  @apply leading-140 ts-size-20/20 lg:ts-size-24/32;
 }
 
 .ts-p-md {
-  @apply leading-130 ts-size-15/18 lg:ts-size-18/36;
+  @apply leading-150 ts-size-16/20 lg:ts-size-20/32;
 }
 
 .ts-p-sm {
-  @apply leading-130 ts-size-13/18 lg:ts-size-15/36;
+  @apply leading-150 tracking-1 ts-size-13/20 lg:ts-size-16/32;
 }
 
 .ts-p-xs {
-  @apply leading-130 ts-size-11/18 lg:ts-size-13/36;
+  @apply leading-150 tracking-1 ts-size-11/20 lg:ts-size-14/32;
 }
 
 /* Misc */
+
+.ts-count {
+  @apply uppercase leading-none font-features-['tnum'] ts-size-13/20 lg:ts-size-16/32;
+}
+
 .inline-link {
   @apply nice-underline transition-opacity hover:opacity-50;
 }

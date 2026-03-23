@@ -8,10 +8,6 @@
 @plugin "@tailwindcss/typography";
 @plugin "tw-easing-gradients";
 
-@theme inline {
-  --font-sans: var(--mori), 'Helvetica Neue', 'helvetica', sans-serif;
-}
-
 @theme {
   /* (mirror breakpoints in _responsive.css if edited) */
   --breakpoint-*: initial;

@@ -135,12 +135,13 @@ export function PlainTextBlock({ block }) {
   return (
     <div
       className={cn(
-        block.textStyle || 'ts-p-md',
         block.color,
         block.balanceLines ? 'text-balance' : 'text-pretty'
       )}
     >
-      {block.textContent || ''}
+      <div className={block.textStyle || 'ts-p-md'}>
+        {block.textContent || ''}
+      </div>
     </div>
   )
 }
