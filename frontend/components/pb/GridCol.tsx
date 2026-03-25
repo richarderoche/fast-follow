@@ -45,10 +45,9 @@ export default function GridCol({
     columnSettings || {}
   const colClasses = columnSettings ? getGridClasses(columnSettings) : ''
   const yClasses = yAlignment ? getAlignClasses(yAlignment, 'y') : ''
-  const trueSizes =
-    outerSettings.size && columnSettings?.size
-      ? getTrueSizes(outerSettings.size, columnSettings.size)
-      : ''
+  const trueSizes = columnSettings?.size
+    ? getTrueSizes(outerSettings.size!, columnSettings.size)
+    : getTrueSizes(outerSettings.size!)
   const innerId = `col-${_key}`
 
   const colBlocks = (
