@@ -8,6 +8,7 @@ export default function ShowHeaderLogo() {
     const headerLogo = document.getElementById('header-logo')
     if (!headerLogo) return
     gsap.to(headerLogo, { opacity: 1, duration: 0.8, ease: 'power2.out' })
+    headerLogo.classList.add('pointer-events-auto')
   })
 
   return null
