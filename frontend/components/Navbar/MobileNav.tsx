@@ -85,7 +85,7 @@ export default function MobileNav(props: NavbarProps) {
         <nav
           id="mobile-nav"
           ref={navRef}
-          className="fixed top-0 bottom-0 left-0 w-9/12 bg-white z-10 overflow-auto -translate-x-full"
+          className="fixed top-0 bottom-0 left-0 w-9/12 bg-white z-999 overflow-auto -translate-x-full"
           data-lenis-prevent
           role="navigation"
           aria-label="Mobile Navigation"

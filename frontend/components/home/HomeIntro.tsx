@@ -88,23 +88,25 @@ export default function HomeIntro({ subtitle }: { subtitle: string }) {
       className="ts-header-logo-h1 h-[8em] md:h-[5em] mb-gut opacity-0"
       ref={setIntroRootRef}
     >
-      <SiteWidth className="fixed top-0 left-0 z-99 pointer-events-none">
-        <div
-          className="h-full"
-          style={{ transform: `translateY(${headerLogoTop}px)` }}
-        >
-          <div className="home-intro-text text-balance origin-top-left">
-            <Link id="intro-logo" className="pointer-events-auto" href="/">
-              <span className="font-bold">Fast</span>
-              <span>Follow</span>
-            </Link>
-            <span className="home-intro-subtitle font-bold text-display-subtle">
-              {' '}
-              {subtitle}
-            </span>
+      <div className="fixed top-0 left-0 w-full z-10 pointer-events-none">
+        <SiteWidth>
+          <div
+            className="h-full"
+            style={{ transform: `translateY(${headerLogoTop}px)` }}
+          >
+            <div className="home-intro-text text-balance origin-top-left">
+              <Link id="intro-logo" className="pointer-events-auto" href="/">
+                <span className="font-bold">Fast</span>
+                <span>Follow</span>
+              </Link>
+              <span className="home-intro-subtitle font-bold text-display-subtle">
+                {' '}
+                {subtitle}
+              </span>
+            </div>
           </div>
-        </div>
-      </SiteWidth>
+        </SiteWidth>
+      </div>
     </div>
   )
 }

@@ -15,7 +15,7 @@ export default async function Navbar() {
   const headerNav = data?.headerNav || ([] as NavItem[])
 
   return (
-    <header className="h-header fixed top-0 left-0 w-full z-10 pointer-events-none">
+    <header className="h-header fixed top-0 left-0 w-full z-999 pointer-events-none">
       <SkipLink />
       <SiteWidth className="h-full flex items-end justify-between gap-x-gut">
         <HeaderLogo />
