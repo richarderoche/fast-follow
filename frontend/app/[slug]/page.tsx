@@ -1,3 +1,4 @@
+import ShowHeaderLogo from '@/components/Navbar/ShowHeaderLogo'
 import PageBuilder from '@/components/pb/PageBuilder'
 import PageWrapper from '@/components/shared/PageWrapper'
 import { getFirstSectionInfo } from '@/lib/utils'
@@ -68,8 +69,11 @@ export default async function PageSlugRoute({ params }: Props) {
   const { firstIsHero, firstPbSectionKey } = getFirstSectionInfo(data)
 
   return (
-    <PageWrapper className={firstIsHero ? '' : 'pt-header'}>
-      <PageBuilder data={data} firstPbSectionKey={firstPbSectionKey ?? ''} />
-    </PageWrapper>
+    <>
+      <ShowHeaderLogo />
+      <PageWrapper className={firstIsHero ? '' : 'pt-header'}>
+        <PageBuilder data={data} firstPbSectionKey={firstPbSectionKey ?? ''} />
+      </PageWrapper>
+    </>
   )
 }

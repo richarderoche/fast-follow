@@ -4,6 +4,7 @@ If these change, make sure to update the respective values in the type styles.
 
 :root {
   --gut: 1.125rem; /* 18px */
+  --header-height: calc(var(--gut) * 2.6);
 }
 /* 400px (SM BASELINE) */
 @media (min-width: 25rem) {
@@ -26,13 +27,14 @@ If these change, make sure to update the respective values in the type styles.
 /* 768px */
 @media (min-width: 48rem) {
   :root {
-    --gut: 1.875rem; /* 30px */
+    --gut: 1.375rem; /* 22px */
   }
 }
 /* 1024px */
 @media (min-width: 64rem) {
   :root {
     --gut: 1.34375rem; /* 21.5px */
+    --header-height: calc(var(--gut) * 2);
   }
 }
 /* 1280px */

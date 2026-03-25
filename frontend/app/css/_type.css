@@ -37,11 +37,6 @@ Example: ts-size-24/32 → font-size = var(--gut) × (24÷36)
 }
 
 /* Paragraphs */
-
-.ts-p-xl {
-  @apply leading-130 -tracking-1 ts-size-24/20 lg:ts-size-32/32;
-}
-
 .ts-p-lg {
   @apply leading-140 ts-size-20/20 lg:ts-size-24/32;
 }
@@ -54,11 +49,15 @@ Example: ts-size-24/32 → font-size = var(--gut) × (24÷36)
   @apply leading-150 tracking-1 ts-size-13/20 lg:ts-size-16/32;
 }
 
-.ts-p-xs {
-  @apply leading-150 tracking-1 ts-size-11/20 lg:ts-size-14/32;
+/* Misc */
+
+.ts-header-logo {
+  @apply leading-none -tracking-3 ts-size-39/20 lg:ts-size-46/32;
 }
 
-/* Misc */
+.ts-header-logo-h1 {
+  @apply leading-none -tracking-3 ts-size-51/20 lg:ts-size-102/32;
+}
 
 .ts-count {
   @apply uppercase leading-none font-features-['tnum'] ts-size-13/20 lg:ts-size-16/32;

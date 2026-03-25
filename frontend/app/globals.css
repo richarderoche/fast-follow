@@ -46,7 +46,7 @@
   --spacing-gut-1000: calc(var(--gut) * 10);
   --spacing-outdent: -0.065em;
   --spacing-max-ch: 55ch;
-  --spacing-header: calc(var(--gut) * 2);
+  --spacing-header: var(--header-height);
 
   /* Use .corner-container > .corner or .corner-sm
   for container-relative rounded corners */
@@ -74,5 +74,5 @@ for container-relative rounded corners
 }
 
 .corner {
-  @apply overflow-hidden rounded-xs @sm/corner:rounded-sm @md/corner:rounded-md @lg/corner:rounded-lg @xl/corner:rounded-lg;
+  @apply overflow-hidden rounded-xs @xl/corner:rounded-sm;
 }

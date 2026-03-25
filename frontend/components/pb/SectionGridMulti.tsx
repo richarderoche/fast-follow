@@ -23,13 +23,13 @@ export default function SectionGridMulti({
   // Prep attributes
   const outerSettings = getOuterSettings(rowWidth)
   const outerClasses = outerSettings ? getGridClasses(outerSettings) : ''
-  const looseColSpacing = rowWidth > 8 && columns.length < 3
+  //const looseColSpacing = rowWidth > 8 && columns.length < 3
 
   return (
     <SiteWidth>
       <SiteGrid>
         <div className={outerClasses}>
-          <SiteGrid yGaps={true} looseColSpacing={looseColSpacing}>
+          <SiteGrid yGaps={true}>
             {columns.map((col) => (
               <SanityVisualEditingPath
                 key={col._key}

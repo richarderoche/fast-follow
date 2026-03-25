@@ -9,11 +9,9 @@ export const textStyleOptions = [
   { title: 'H4', value: 'ts-h4' },
   { title: 'H5 Caps', value: 'ts-h5' },
   { title: 'H6', value: 'ts-h6' },
-  { title: 'Body XL', value: 'ts-p-xl' },
   { title: 'Body Large', value: 'ts-p-lg' },
   { title: 'Body Medium', value: 'ts-p-md' },
   { title: 'Body Small', value: 'ts-p-sm' },
-  { title: 'Body XS', value: 'ts-p-xs' },
 ]
 
 // If adding options, add classes to frontend/safelist-classes.txt

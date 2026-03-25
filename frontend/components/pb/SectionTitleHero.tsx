@@ -14,15 +14,15 @@ export default function SectionTitleHero({
   section: PbTitleSection
   isFirst: boolean
 }) {
-  const { rowWidth, titleMode, title, subtitle, image, heroImageAltText } =
-    section
+  const { rowWidth, titleMode, title, image, heroImageAltText } = section
   const isHero = titleMode === 'hero'
   const hasHero = isHero && image?.asset?._ref
 
   // Prep attributes
   const outerSettings = getOuterSettings(rowWidth)
   const outerClasses = outerSettings ? getGridClasses(outerSettings) : ''
-  const shortHeading = (subtitle?.length || 0) < 90
+  const shortHeading = (title?.length || 0) < 90
+  const HeadingTag = isFirst ? 'h1' : 'h2'
   let headingTsClass: string
   switch (true) {
     case rowWidth === 12:
@@ -42,7 +42,7 @@ export default function SectionTitleHero({
   }
 
   return (
-    <div className="pb-gut-50">
+    <div className="pb-gut-200">
       {hasHero && (
         <ImageBasic
           image={image}
@@ -50,52 +50,19 @@ export default function SectionTitleHero({
           sizes="100vw"
           priority={isFirst ? true : false}
           ratio={2.5}
-          className={cn(!isFirst && 'pt-gut-300')}
+          className={cn(!isFirst && 'pt-gut-400')}
         />
       )}
-      <SiteWidth className={isHero || isFirst ? 'pt-gut-200' : 'pt-gut-300'}>
-        <SiteGrid>
-          <div className={outerClasses}>
-            <LabeledHeading
-              label={title}
-              heading={subtitle}
-              headingTsClass={headingTsClass}
-              isFirst={isFirst}
-            />
-          </div>
-        </SiteGrid>
-      </SiteWidth>
-    </div>
-  )
-}
-
-export const LabeledHeading = ({
-  label,
-  labelColorClass = 'text-body-subtle',
-  heading,
-  headingTsClass = 'ts-h1',
-  isFirst = false,
-}: {
-  label?: string
-  labelColorClass?: string
-  heading?: string
-  headingTsClass: string
-  isFirst?: boolean
-}) => {
-  if (!heading && !label) return null
-  const TopTag = isFirst ? 'h1' : 'h2'
-  const BottomTag = isFirst ? 'h2' : 'h3'
-  const HeadingTag = label ? BottomTag : TopTag
-
-  return (
-    <div className="flex flex-col gap-y-gut">
-      {label && (
-        <TopTag className={cn('ts-h5', labelColorClass)}>{label}</TopTag>
-      )}
-      {heading && (
-        <HeadingTag className={cn(headingTsClass, 'text-balance')}>
-          {heading}
-        </HeadingTag>
+      {title && (
+        <SiteWidth className={isHero || isFirst ? 'pt-gut-300' : 'pt-gut-400'}>
+          <SiteGrid>
+            <div className={outerClasses}>
+              <HeadingTag className={cn(headingTsClass, 'text-balance')}>
+                {title}
+              </HeadingTag>
+            </div>
+          </SiteGrid>
+        </SiteWidth>
       )}
     </div>
   )

@@ -50,6 +50,7 @@ const nextConfig: NextConfig = {
       '@sanity/image-url',
       '@sanity/asset-utils',
     ],
+    turbopackFileSystemCacheForDev: true,
   },
   redirects: async () => {
     const allRedirects = await client.fetch(redirectsQuery)

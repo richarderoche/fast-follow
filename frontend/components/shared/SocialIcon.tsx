@@ -22,7 +22,7 @@ const SocialIcon = (name) => {
       return <FaSpotify />
     case 'Tiktok':
       return <FaTiktok />
-    case 'Twitter':
+    case 'X/Twitter':
       return <FaXTwitter />
     case 'Threads':
       return <FaThreads />

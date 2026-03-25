@@ -36,12 +36,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      title: 'Subtitle',
-      name: 'subtitle',
-      type: 'text',
-      rows: 3,
-    }),
-    defineField({
       title: 'Image',
       name: 'image',
       type: 'image',
@@ -64,14 +58,12 @@ export default defineType({
       rowWidth: 'rowWidth',
       titleMode: 'titleMode',
       title: 'title',
-      subtitle: 'subtitle',
     },
-    prepare({ rowWidth, titleMode, title, subtitle }) {
+    prepare({ rowWidth, titleMode, title }) {
       const rowWidthTitle = getRowWidthTitle(rowWidth)
       const mode = titleMode === 'hero' ? 'Hero' : 'Text'
-      const name = title || subtitle
       return {
-        title: name ? `Title/Hero: ${name}` : 'Title/Hero Section',
+        title: title ? `Title/Hero: ${title}` : 'Title/Hero Section',
         subtitle: `${rowWidthTitle} Width / ${mode} Mode`,
         media: IconBoxAlignTop,
       }

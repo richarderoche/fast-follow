@@ -32,14 +32,8 @@ export default defineType({
       group: 'header',
     }),
     defineField({
-      title: 'Footer Nav',
-      name: 'footerNav',
-      type: 'navLinks',
-      group: 'footer',
-    }),
-    defineField({
       name: 'socialIcons',
-      title: 'Social Icons',
+      title: 'Social Links',
       type: 'array',
       group: 'footer',
       of: [
@@ -47,6 +41,14 @@ export default defineType({
           type: 'socialLink',
         },
       ],
+    }),
+    defineField({
+      name: 'footerLocation',
+      title: 'Footer Location',
+      type: 'text',
+      rows: 1,
+      group: 'footer',
+      placeholder: 'Los Angeles, CA',
     }),
     defineField({
       name: 'title',

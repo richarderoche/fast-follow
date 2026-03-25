@@ -68,7 +68,7 @@ export default function MobileNav(props: NavbarProps) {
 
   return (
     <FocusTrap active={isMobileNavOpen}>
-      <div className="lg:hidden">
+      <div className="lg:hidden pointer-events-auto">
         <button
           onClick={handleToggleMobileNav}
           aria-expanded={isMobileNavOpen}

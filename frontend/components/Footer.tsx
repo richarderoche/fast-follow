@@ -1,49 +1,53 @@
-import NavLinks from '@/components/shared/NavLinks'
 import SiteWidth from '@/components/shared/SiteWidth'
-import SocialIcon from '@/components/shared/SocialIcon'
 import { sanityFetch } from '@/sanity/lib/live'
 import { settingsQuery } from '@/sanity/lib/queries'
+import IconLogoSymbol from './icons/IconLogoSymbol'
 import CurrentYear from './shared/CurrentYear'
+import Divider from './shared/Divider'
+import SiteGrid from './shared/SiteGrid'
 
 export default async function Footer() {
   const { data } = await sanityFetch({
     query: settingsQuery,
     stega: false,
   })
-  const footerNav = data?.footerNav || []
-  const socialIcons = data?.socialIcons || []
+  const { socialIcons, footerLocation } = data || {}
 
   return (
-    <footer className="bottom-0 bg-accent py-gut mt-gut">
-      <SiteWidth className="flex flex-col lg:flex-row lg:justify-between items-center gap-gut">
-        {footerNav && footerNav?.length > 0 && (
-          <nav role="navigation">
-            <NavLinks navItems={footerNav} ulClasses="flex flex-wrap gap-em" />
-          </nav>
-        )}
-
-        {socialIcons && (
-          <div className="flex gap-gut-50">
-            {socialIcons.map((link, key) => {
-              return (
-                <a
-                  key={key}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-24 hover:text-white"
-                  aria-label={link.icon}
-                >
-                  <SocialIcon name={link.icon} />
-                </a>
-              )
-            })}
+    <footer className="bottom-0 py-gut-200 md:py-gut mt-gut-400">
+      <SiteWidth>
+        <Divider />
+        <SiteGrid className="mt-gut items-end" yGaps>
+          <div className="max-md:my-gut col-span-8 md:col-span-4 lg:col-span-3">
+            <IconLogoSymbol className="w-full h-auto" />
           </div>
-        )}
+          <div className="col-span-12 md:col-span-7 md:col-start-6 lg:col-span-4 lg:col-start-9 flex gap-gut justify-between">
+            {socialIcons && (
+              <div className="flex flex-col gap-gut-50">
+                {socialIcons.map((link, key) => {
+                  return (
+                    <a
+                      key={key}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-white"
+                    >
+                      {link.platform} ↗
+                    </a>
+                  )
+                })}
+              </div>
+            )}
 
-        <div>
-          &copy; <CurrentYear />. All Rights Reserved.
-        </div>
+            <div className="flex flex-col gap-gut-50">
+              <p className="whitespace-nowrap">{footerLocation}</p>
+              <p className="whitespace-nowrap">
+                FastFollow <CurrentYear /> ©
+              </p>
+            </div>
+          </div>
+        </SiteGrid>
       </SiteWidth>
     </footer>
   )

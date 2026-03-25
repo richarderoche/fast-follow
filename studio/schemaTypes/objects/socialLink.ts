@@ -11,8 +11,8 @@ import {
 } from '@tabler/icons-react'
 import { defineField, defineType } from 'sanity'
 
-const getIcon = (icon: string) => {
-  switch (icon) {
+const getIcon = (platform: string) => {
+  switch (platform) {
     case 'Facebook':
       return IconBrandFacebook
     case 'Instagram':
@@ -21,7 +21,7 @@ const getIcon = (icon: string) => {
       return IconBrandSoundcloud
     case 'Spotify':
       return IconBrandSpotify
-    case 'Twitter':
+    case 'X/Twitter':
       return IconBrandX
     case 'Threads':
       return IconBrandThreads
@@ -46,8 +46,8 @@ export default defineType({
   },
   fields: [
     defineField({
-      title: 'Icon',
-      name: 'icon',
+      title: 'Platform',
+      name: 'platform',
       type: 'string',
       options: {
         list: [
@@ -55,7 +55,7 @@ export default defineType({
           { title: 'Instagram', value: 'Instagram' },
           { title: 'Soundcloud', value: 'Soundcloud' },
           { title: 'Spotify', value: 'Spotify' },
-          { title: 'X/Twitter', value: 'Twitter' },
+          { title: 'X/Twitter', value: 'X/Twitter' },
           { title: 'Threads', value: 'Threads' },
           { title: 'YouTube', value: 'YouTube' },
           { title: 'Tiktok', value: 'Tiktok' },
@@ -71,14 +71,14 @@ export default defineType({
   ],
   preview: {
     select: {
-      icon: 'icon',
+      platform: 'platform',
       url: 'url',
     },
-    prepare({ icon, url }) {
+    prepare({ platform, url }) {
       return {
-        title: icon,
+        title: platform,
         subtitle: url ? url : '(url not set)',
-        media: getIcon(icon),
+        media: getIcon(platform),
       }
     },
   },

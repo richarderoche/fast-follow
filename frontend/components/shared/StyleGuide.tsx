@@ -104,10 +104,6 @@ const hStyles = [
 
 const pStyles = [
   {
-    name: 'P XL',
-    style: 'ts-p-xl',
-  },
-  {
     name: 'P LG',
     style: 'ts-p-lg',
   },
@@ -118,10 +114,6 @@ const pStyles = [
   {
     name: 'P SM',
     style: 'ts-p-sm',
-  },
-  {
-    name: 'P XS',
-    style: 'ts-p-xs',
   },
 ]
 

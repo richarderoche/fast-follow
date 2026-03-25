@@ -9,9 +9,16 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your personal website.',
-      title: 'Title',
+      title: 'Title (for backend use only)',
       type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'subtitle',
+      title: 'Subtitle',
+      description: 'This goes after the words "FastFollow" in the intro.',
+      type: 'string',
+      placeholder: 'e.g. "is a commercial editorial house."',
       validation: (rule) => rule.required(),
     }),
     defineField({

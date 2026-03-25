@@ -12,7 +12,7 @@
 
 .dark-theme {
   --theme-bg: oklch(var(--black-oklch));
-  --theme-bg-subtle: oklch(var(--gray-900-oklch));
+  --theme-bg-subtle: oklch(var(--gray-800-oklch));
 
   --theme-body: oklch(var(--white-oklch));
   --theme-display-subtle: oklch(var(--gray-750-oklch));

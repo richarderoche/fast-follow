@@ -142,9 +142,6 @@ export const settingsQuery = defineQuery(`
     "headerNav": headerNav.navItems[]{
       ${link},
     },
-    "footerNav": footerNav.navItems[]{
-      ${link},
-    },
     ${seo},
   }
 `)

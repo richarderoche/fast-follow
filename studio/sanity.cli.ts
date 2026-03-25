@@ -9,7 +9,7 @@ export default defineCliConfig({
     dataset: dataset,
   },
   studioHost: process.env.SANITY_STUDIO_STUDIO_HOST || '',
-  deployment: { appId: 'o7wo2o5rjb7knfp93a2xn42h', autoUpdates: true },
+  deployment: { appId: 'o7wo2o5rjb7knfp93a2xn42h', autoUpdates: false },
   typegen: {
     path: './src/**/*.{ts,tsx,js,jsx}',
     schema: 'schema.json',

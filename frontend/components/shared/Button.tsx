@@ -46,7 +46,7 @@ export default function Button(props: ButtonProps) {
       )}
       download={download}
     >
-      <span className="leading-none whitespace-nowrap ts-h5 py-[.4em] px-[.8em] center-caps">
+      <span className="leading-none whitespace-nowrap ts-h5 py-[.25em] px-[.8em]">
         {buttonText}
       </span>
     </Link>
