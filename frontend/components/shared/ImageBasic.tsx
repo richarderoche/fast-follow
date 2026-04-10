@@ -3,6 +3,7 @@ import { getImageDimensions } from '@sanity/asset-utils'
 import type { Image as SanityImageType } from 'sanity'
 
 import { cn } from '@/lib/utils'
+import { SITE_MAX_WIDTH } from './SiteWidth'
 
 interface ImageBasicProps {
   alt?: string
@@ -14,6 +15,7 @@ interface ImageBasicProps {
   sizes?: string
   mode?: 'contain' | 'cover'
   style?: React.CSSProperties
+  maxDimension?: number
 }
 
 export default function ImageBasic({
@@ -26,6 +28,7 @@ export default function ImageBasic({
   sizes = '100vw',
   mode,
   style,
+  maxDimension = SITE_MAX_WIDTH,
 }: ImageBasicProps) {
   if (!image?.asset?._ref) return null
   const hasRatio = ratio !== 0
@@ -58,6 +61,7 @@ export default function ImageBasic({
       mode={mode}
       sizes={sizes}
       loading={priority ? 'eager' : 'lazy'}
+      maxDimension={maxDimension}
       {...(hotspot && { hotspot })}
       {...(cropArea && { crop: cropArea })}
       {...(style && { style })}
