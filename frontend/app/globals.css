@@ -45,7 +45,7 @@
   --spacing-gut-900: calc(var(--gut) * 9);
   --spacing-gut-1000: calc(var(--gut) * 10);
   --spacing-outdent: -0.065em;
-  --spacing-max-ch: 55ch;
+  --spacing-max-ch: 65ch;
   --spacing-header: var(--header-height);
 
   /* Use .corner-container > .corner or .corner-sm

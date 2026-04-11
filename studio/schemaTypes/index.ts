@@ -1,6 +1,8 @@
+import article from './documents/article'
 import page from './documents/page'
 import project from './documents/project'
 import redirect from './documents/redirect'
+import tag from './documents/tag'
 import navExternal from './objects/navExternal'
 import navLinks from './objects/navLinks'
 import navPage from './objects/navPage'
@@ -38,6 +40,7 @@ export const schemaTypes = [
   // Documents
   page,
   project,
+  article,
   redirect,
   // Objects
   column,
@@ -65,6 +68,7 @@ export const schemaTypes = [
   ptSlim,
   seo,
   socialLink,
+  tag,
 ]
 
-export const singletons = []
+//export const singletons = []

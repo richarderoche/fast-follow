@@ -15,7 +15,7 @@ export default async function IndexRoute() {
   }
 
   return (
-    <PageWrapper>
+    <PageWrapper showHeaderLogo={false}>
       <HomeIntro subtitle={subtitle || 'is a commercial editorial house.'} />
       <StyleGuide />
       <PageBuilder data={data} firstPbSectionKey={'not-applicable'} />

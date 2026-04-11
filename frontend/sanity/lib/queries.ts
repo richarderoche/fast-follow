@@ -21,6 +21,13 @@ const link = `
   }
 `
 
+const tags = `
+  "tags": tags[]->{
+    ...,
+    "slug": slug.current,
+  }
+`
+
 const portableText = `
   ...,
   markDefs[]{
@@ -128,12 +135,22 @@ export const projectBySlugQuery = defineQuery(`
   }
 `)
 
+export const articleBySlugQuery = defineQuery(`
+  *[_type == "article" && slug.current == $slug][0] {
+    ...,
+    "slug": slug.current,
+    ${tags},
+    ${pb},
+    ${seo},
+  }
+`)
+
 export const slugsByTypeQuery = defineQuery(`
-  *[_type == $type && defined(slug.current)]{"slug": slug.current}
+  *[_type == $type && defined(slug.current)]{"slug": slug.current, postType}
 `)
 
 export const sitemapByTypeQuery = defineQuery(`
-  *[_type == $type]{"slug": slug.current, "updatedAt": _updatedAt}
+  *[_type == $type]{"slug": slug.current, "updatedAt": _updatedAt, postType}
 `)
 
 export const settingsQuery = defineQuery(`

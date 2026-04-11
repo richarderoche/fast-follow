@@ -128,3 +128,12 @@ export function getFirstSectionInfo(data: PageBuilderData) {
     firstPbSection?.titleMode === 'hero'
   return { firstIsHero, firstPbSectionKey }
 }
+
+export function blogDate(date: string) {
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: 'long',
+  })
+  return dateFormatter.format(new Date(date))
+}

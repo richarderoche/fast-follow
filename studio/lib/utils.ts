@@ -1,9 +1,9 @@
-import type { PbGridSettings } from '../../frontend/sanity.types'
+import type { PbColSettings } from '../../frontend/sanity.types'
 
 //
 // SCHEMA HELPERS
 
-export function getGridSettings(gridSettings: PbGridSettings) {
+export function getGridSettings(gridSettings: PbColSettings) {
   const { size, start } = gridSettings
   if (!start || !size) {
     return ''

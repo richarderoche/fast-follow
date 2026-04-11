@@ -21,7 +21,7 @@ export default function SiteGrid({
       : yGaps
         ? 'gap-gut'
         : looseColSpacing
-          ? 'gap-x-gut lg:gap-x-gut-200'
+          ? 'gap-x-gut lg:gap-x-gut-150'
           : 'gap-x-gut'
 
   return (
