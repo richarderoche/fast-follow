@@ -6,12 +6,14 @@ export default defineType({
   type: 'object',
   fields: [
     defineField({
-      name: 'hideFromSearchEngines',
-      title: 'Hide from search engines',
-      type: 'boolean',
-      initialValue: false,
+      name: 'image',
+      title: 'Open Graph Image',
+      type: 'image',
       description:
-        'If true, the page will be public but not indexed by search engines.',
+        'Displayed on social cards and search engine results. Recommended size: 1200x627 (PNG or JPG)',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       name: 'seoTitle',
@@ -31,14 +33,12 @@ export default defineType({
         ),
     }),
     defineField({
-      name: 'image',
-      title: 'Open Graph Image',
-      type: 'image',
+      name: 'hideFromSearchEngines',
+      title: 'Hide from search engines',
+      type: 'boolean',
+      initialValue: false,
       description:
-        'Displayed on social cards and search engine results. Recommended size: 1200x627 (PNG or JPG)',
-      options: {
-        hotspot: true,
-      },
+        'If true, the page will be public but not indexed by search engines.',
     }),
   ],
 })

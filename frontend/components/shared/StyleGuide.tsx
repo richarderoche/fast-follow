@@ -40,9 +40,9 @@ export default function StyleGuide() {
           <h6 className="ts-h6 text-body-subtle mb-gut-200">UI Elements</h6>
           <div className="grid grid-cols-2 lg:grid-cols-1 gap-gut">
             <div>
-              <Button path="/" text="Button" style="main" />
+              <Button path="/" text="Button" />
             </div>
-            <Button path="/" text="Alt Button" style="alt" />
+            <Button path="/" text="Filter" icon="filter" />
           </div>
           <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-2 gap-4 mt-gut-200">
             {ColorSwatches.map((swatch) => (

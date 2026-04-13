@@ -1,34 +1,32 @@
+import BlogFeed from '@/components/blog/BlogFeed'
 import PageBuilder from '@/components/pb/PageBuilder'
 import PageWrapper from '@/components/shared/PageWrapper'
 import { getFirstSectionInfo, getMetadataRobots } from '@/lib/utils'
 import { sanityFetch } from '@/sanity/lib/live'
-import { pagesBySlugQuery, slugsByTypeQuery } from '@/sanity/lib/queries'
+import {
+  blogPageQuery,
+  metadataBySlugQuery,
+  slugsByTypeQuery,
+} from '@/sanity/lib/queries'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import type { Metadata, ResolvingMetadata } from 'next'
-import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import type { Image } from 'sanity'
-
-type Props = {
-  params: Promise<{ slug: string }>
-}
 
 export async function generateMetadata(
-  { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { data: page } = await sanityFetch({
-    query: pagesBySlugQuery,
-    params,
+  const { data: meta } = await sanityFetch({
+    query: metadataBySlugQuery,
+    params: { type: 'blog', slug: 'blog' },
     stega: false,
   })
 
-  const ogImage = urlForOpenGraphImage(page?.ogImage as Image)
-  const noIndex = page?.noIndex ?? false
+  const ogImage = urlForOpenGraphImage(meta?.ogImage)
+  const noIndex = meta?.noIndex ?? false
 
   return {
-    title: page?.seoTitle ?? page?.title,
-    description: page?.description ?? (await parent).description,
+    title: meta?.seoTitle ?? meta?.title,
+    description: meta?.description ?? (await parent).description,
     openGraph: {
       images: ogImage
         ? [ogImage]
@@ -41,26 +39,28 @@ export async function generateMetadata(
 export async function generateStaticParams() {
   const { data } = await sanityFetch({
     query: slugsByTypeQuery,
-    params: { type: 'page' },
+    params: { type: 'blog' },
     stega: false,
     perspective: 'published',
   })
   return data
 }
 
-export default async function PageSlugRoute({ params }: Props) {
-  const { data } = await sanityFetch({ query: pagesBySlugQuery, params })
+export default async function BlogRoute() {
+  const { data } = await sanityFetch({ query: blogPageQuery })
 
-  // Only show the 404 page if we're in production, when in draft mode we might be about to create a page on this slug, and live reload won't work on the 404 route
-  if (!data?._id && !(await draftMode()).isEnabled) {
+  if (!data) {
     notFound()
   }
-
+  const { allArticles, postsPerLoad = 6 } = data ?? {}
   const { firstIsHero, firstPbSectionKey } = getFirstSectionInfo(data)
 
   return (
     <PageWrapper className={firstIsHero ? '' : 'pt-header'}>
       <PageBuilder data={data} firstPbSectionKey={firstPbSectionKey ?? ''} />
+      {allArticles && allArticles.length > 0 && (
+        <BlogFeed allArticles={allArticles} postsPerLoad={postsPerLoad} />
+      )}
     </PageWrapper>
   )
 }

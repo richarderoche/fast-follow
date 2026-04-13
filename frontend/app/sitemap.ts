@@ -17,6 +17,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     stega: false,
     perspective: 'published',
   })
+  const blog = await sanityFetch({
+    query: sitemapByTypeQuery,
+    params: { type: 'blog' },
+    stega: false,
+    perspective: 'published',
+  })
   const articles = await sanityFetch({
     query: sitemapByTypeQuery,
     params: { type: 'article' },
@@ -32,6 +38,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
   ]
+
+  blog.data.map(({ slug, updatedAt }) => {
+    sitemap.push(smObject(baseURL, slug, 'blog', 'yearly', 0.8, updatedAt))
+  })
 
   pages.data.map(({ slug, updatedAt }) => {
     sitemap.push(smObject(baseURL, slug, 'page', 'yearly', 0.8, updatedAt))

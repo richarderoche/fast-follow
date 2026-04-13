@@ -1,12 +1,12 @@
 import { StackCompactIcon } from '@sanity/icons'
-import { FileText } from 'lucide-react'
+import { Notebook } from 'lucide-react'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
+  name: 'blog',
+  title: 'Blog',
   type: 'document',
-  name: 'page',
-  title: 'Pages',
-  icon: FileText,
+  icon: Notebook,
   fields: [
     defineField({
       name: 'title',
@@ -18,16 +18,29 @@ export default defineType({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      options: {
-        source: 'title',
+      initialValue: {
+        current: 'blog',
       },
-      validation: (rule) => rule.required(),
+      hidden: () => true,
     }),
     defineField({
-      title: 'Page Builder',
       name: 'pbSections',
+      title: 'Page Builder (Above Blog Feed)',
       type: 'pbSections',
       icon: StackCompactIcon,
+    }),
+    defineField({
+      name: 'postsPerLoad',
+      title: 'Posts per Load',
+      type: 'number',
+      initialValue: 6,
+      options: {
+        list: [
+          { title: '6', value: 6 },
+          { title: '12', value: 12 },
+          { title: '18', value: 18 },
+        ],
+      },
     }),
     defineField({
       name: 'seo',
@@ -38,14 +51,11 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      slug: 'slug.current',
-      seoImage: 'seo.image',
     },
-    prepare({ title, slug, seoImage }) {
+    prepare({ title }) {
       return {
-        title: title ? title : 'Page',
-        subtitle: slug ? `/${slug}` : '(No slug set)',
-        media: seoImage || FileText,
+        title,
+        media: Notebook,
       }
     },
   },

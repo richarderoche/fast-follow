@@ -137,3 +137,16 @@ export function blogDate(date: string) {
   })
   return dateFormatter.format(new Date(date))
 }
+
+export function getMetadataRobots(noIndex: boolean) {
+  return {
+    index: !noIndex,
+    follow: !noIndex,
+    nocache: noIndex,
+    googleBot: {
+      index: !noIndex,
+      follow: !noIndex,
+      noimageindex: noIndex,
+    },
+  }
+}

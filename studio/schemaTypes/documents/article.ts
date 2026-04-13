@@ -1,11 +1,12 @@
-import { BookIcon, StackCompactIcon } from '@sanity/icons'
+import { StackCompactIcon } from '@sanity/icons'
+import { NotebookPen } from 'lucide-react'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'article',
-  title: 'Articles',
+  title: 'Blog Posts',
   type: 'document',
-  icon: BookIcon,
+  icon: NotebookPen,
   fields: [
     defineField({
       name: 'title',
@@ -105,12 +106,13 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
+      postType: 'postType',
       coverImage: 'coverImage.asset',
       tag1: 'tags.0.title',
       tag2: 'tags.1.title',
       tag3: 'tags.2.title',
     },
-    prepare({ title, coverImage, tag1, tag2, tag3 }) {
+    prepare({ title, postType, coverImage, tag1, tag2, tag3 }) {
       const tags = []
       if (tag1) tags.push(tag1)
       if (tag2) tags.push(tag2)
@@ -119,8 +121,8 @@ export default defineType({
       const tagsString = tags.join(', ')
       return {
         title,
-        subtitle: `Tags: ${tagsString}`,
-        media: coverImage || BookIcon,
+        subtitle: `${postType === 'external' ? 'External' : 'Page'} / Tags: ${tagsString}`,
+        media: coverImage || NotebookPen,
       }
     },
   },

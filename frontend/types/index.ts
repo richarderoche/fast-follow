@@ -2,7 +2,12 @@
 // Only reusable types should be here
 // Put one-off types in the component file
 
-import { HomePageQueryResult, PagesBySlugQueryResult } from '@/sanity.types'
+import {
+  ArticleBySlugQueryResult,
+  BlogPageQueryResult,
+  HomePageQueryResult,
+  PagesBySlugQueryResult,
+} from '@/sanity.types'
 
 export interface NavPage {
   type: string
@@ -30,4 +35,6 @@ export type PbBlocksQueryResult = NonNullable<
 export type PageBuilderData =
   | PagesBySlugQueryResult
   | HomePageQueryResult
+  | BlogPageQueryResult
+  | ArticleBySlugQueryResult
   | undefined

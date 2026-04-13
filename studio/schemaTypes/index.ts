@@ -28,19 +28,21 @@ import pbGridMulti from './pbSections/pbGridMulti'
 import pbGridSingle from './pbSections/pbGridSingle'
 import pbSectionSettings from './pbSections/pbSectionSettings'
 import pbTitleSection from './pbSections/pbTitle'
+import blog from './singletons/blog'
 import home from './singletons/home'
 import settings from './singletons/settings'
 
-export const singletonSchemaTypes = [home, settings]
+export const singletonSchemaTypes = [settings, home, blog]
 
 export const schemaTypes = [
   // Singletons
-  home,
   settings,
+  home,
+  blog,
   // Documents
-  page,
   project,
   article,
+  page,
   redirect,
   // Objects
   column,

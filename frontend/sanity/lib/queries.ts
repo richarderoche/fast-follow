@@ -129,9 +129,36 @@ export const pagesBySlugQuery = defineQuery(`
   }
 `)
 
+export const metadataBySlugQuery = defineQuery(`
+  *[_type == $type && slug.current == $slug][0] {
+    title,
+    "slug": slug.current,
+    ${seo},
+  }
+`)
+
 export const projectBySlugQuery = defineQuery(`
   *[_type == "project" && slug.current == $slug][0] {
     ...,
+  }
+`)
+
+export const blogPageQuery = defineQuery(`
+  *[_type == "blog"][0] {
+    ...,
+    "allArticles": *[_type == "article"] | order(publishDate desc) {
+      title,
+      "slug": slug.current,
+      ${tags},
+      coverImage,
+      coverImageAlt,
+      publishDate,
+      introText,
+      postType,
+      externalLink,
+    },
+    ${pb},
+    ${seo},
   }
 `)
 

@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import GlobalScripts from '@/components/shared/GlobalScripts'
 import { GSAP } from '@/components/shared/GSAP'
 import { Lenis } from '@/components/shared/Lenis'
+import { getMetadataRobots } from '@/lib/utils'
 import { sanityFetch, SanityLive } from '@/sanity/lib/live'
 import { settingsQuery } from '@/sanity/lib/queries'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
@@ -43,16 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
     },
-    robots: {
-      index: !noIndex,
-      follow: !noIndex,
-      nocache: noIndex,
-      googleBot: {
-        index: !noIndex,
-        follow: !noIndex,
-        noimageindex: noIndex,
-      },
-    },
+    robots: getMetadataRobots(noIndex),
     authors: [
       {
         name: 'Infinite Productivity',
