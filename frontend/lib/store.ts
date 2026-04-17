@@ -11,7 +11,13 @@ type AppStore = {
 
 type ProjectsStore = {
   thumbnailsPerRow: number
+  selectedFormatId: string | null
+  selectedRoleId: string | null
+  selectedArtistId: string | null
   setThumbnailsPerRow: (value: number) => void
+  setSelectedFormatId: (id: string | null) => void
+  setSelectedRoleId: (id: string | null) => void
+  selectArtistFilter: (id: string) => void
 }
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -26,5 +32,14 @@ export const useAppStore = create<AppStore>((set) => ({
 
 export const useProjectsStore = create<ProjectsStore>((set) => ({
   thumbnailsPerRow: 2,
+  selectedFormatId: null,
+  selectedRoleId: null,
+  selectedArtistId: null,
   setThumbnailsPerRow: (value: number) => set({ thumbnailsPerRow: value }),
+  setSelectedFormatId: (id: string | null) => set({ selectedFormatId: id }),
+  setSelectedRoleId: (id: string | null) => set({ selectedRoleId: id }),
+  selectArtistFilter: (id: string) =>
+    set((s) => ({
+      selectedArtistId: s.selectedArtistId === id ? null : id,
+    })),
 }))

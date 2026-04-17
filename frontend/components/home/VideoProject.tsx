@@ -10,7 +10,6 @@ import {
   imgSizesFormat,
 } from '@/lib/utils'
 import { AllProjectsQueryResult } from '@/sanity.types'
-import MuxPlayer from '@mux/mux-player-react'
 import Image from 'next/image'
 
 export default function VideoProject({
@@ -87,7 +86,6 @@ export default function VideoProject({
           ))}
         </div>
       </div>
-      {false && <MuxPlayer playbackId={playbackId ?? ''} poster="" />}
     </div>
   )
 }

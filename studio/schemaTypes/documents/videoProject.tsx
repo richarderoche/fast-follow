@@ -1,7 +1,6 @@
 import { Clapperboard } from 'lucide-react'
 import { defineField, defineType } from 'sanity'
 
-/** Sanity `date` values are `YYYY-MM-DD`. Preview: m/d yy (no leading zeros on m or d). */
 function formatCompactUsDate(iso: string) {
   const match = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso)
   if (!match) return iso

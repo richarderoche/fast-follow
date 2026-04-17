@@ -60,7 +60,7 @@ Example: ts-size-24/32 → font-size = var(--gut) × (24÷36)
 }
 
 .ts-count {
-  @apply uppercase leading-none font-features-['tnum'] ts-size-13/20 lg:ts-size-16/32;
+  @apply uppercase font-bold  leading-none text-10;
 }
 
 .inline-link {

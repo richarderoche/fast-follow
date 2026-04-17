@@ -116,14 +116,30 @@ export const allProjectsQuery = defineQuery(`
       playbackId,
       'ratio': data.aspect_ratio,
     },
-    "formats": formats[]->{
-      ...,
-    },
     "artists": artists[]-> | order(coalesce(role[0]->priority, 0) desc, lastName asc, firstName asc){
       ...,
-      "role": role[0]->title,
-      "rolePlural": role[0]->plural,
+      "role": role[0]->{_id, title, plural, priority},
       "name": firstName + " " + lastName,
+    },
+    "formats": formats[]->{
+      _id,
+      title,
+      priority,
+    }
+  }
+`)
+
+export const allProjectIDsQuery = defineQuery(`
+  *[_type == "videoProject"] | order(releaseDate desc) {
+    _id,
+    "formats": formats[]->{
+      _id,
+    },
+    "artists": artists[]->{
+      _id,
+    },
+    "roles": artists[]->role[0]->{
+      _id,
     },
   }
 `)

@@ -15,14 +15,15 @@ export function getAllCredits(
     Record<string, { names: string[]; labelPlural?: string }>
   >((acc, artist) => {
     const role = artist.role
-    if (!role || !artist.name) return acc
-    if (!acc[role]) {
-      acc[role] = {
+    const label = role?.title
+    if (!label || !artist.name) return acc
+    if (!acc[label]) {
+      acc[label] = {
         names: [],
-        labelPlural: artist.rolePlural || undefined,
+        labelPlural: role?.plural ?? undefined,
       }
     }
-    acc[role].names.push(artist.name)
+    acc[label].names.push(artist.name)
     return acc
   }, {})
 
@@ -41,8 +42,7 @@ export function getAllCredits(
         label: credit.role as string,
         names: credit.names,
       })),
-  ].filter(
-    (credit): credit is ProjectCreditLine =>
-      Boolean(credit.names?.length)
+  ].filter((credit): credit is ProjectCreditLine =>
+    Boolean(credit.names?.length)
   )
 }

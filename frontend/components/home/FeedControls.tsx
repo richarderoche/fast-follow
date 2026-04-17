@@ -3,12 +3,16 @@ import { useProjectsStore } from '@/lib/store'
 import { cn } from '@/lib/utils'
 import Button from '../shared/Button'
 
-export default function FeedControls() {
+export default function FeedControls({
+  onToggleFilters,
+}: {
+  onToggleFilters: () => void
+}) {
   const { thumbnailsPerRow, setThumbnailsPerRow } = useProjectsStore()
 
   return (
-    <div className="flex justify-between items-center py-gut">
-      <Button text="Filter" icon="filter" />
+    <div className="flex justify-between items-center pt-header pb-gut-50">
+      <Button text="Filter" icon="filter" onClick={onToggleFilters} />
       <div className="flex gap-gut-50 max-md:hidden">
         <Button
           className={cn(thumbnailsPerRow !== 1 && 'opacity-50')}
