@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 
-import { useStore } from '@/lib/store'
+import { useAppStore } from '@/lib/store'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ShowHeaderLogo from '../Navbar/ShowHeaderLogo'
@@ -12,7 +12,7 @@ export default function PageWrapper({
   showHeaderLogo = true,
   ...props
 }: React.HTMLAttributes<HTMLDivElement> & { showHeaderLogo?: boolean }) {
-  const { enablePageTransition, setEnablePageTransition } = useStore()
+  const { enablePageTransition, setEnablePageTransition } = useAppStore()
   const pageWrapperRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {

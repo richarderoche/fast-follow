@@ -5,7 +5,6 @@
 import {
   ArticleBySlugQueryResult,
   BlogPageQueryResult,
-  HomePageQueryResult,
   PagesBySlugQueryResult,
 } from '@/sanity.types'
 
@@ -34,7 +33,6 @@ export type PbBlocksQueryResult = NonNullable<
 
 export type PageBuilderData =
   | PagesBySlugQueryResult
-  | HomePageQueryResult
   | BlogPageQueryResult
   | ArticleBySlugQueryResult
   | undefined

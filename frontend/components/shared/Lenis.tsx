@@ -1,6 +1,6 @@
 'use client'
 
-import { useStore } from '@/lib/store'
+import { useAppStore } from '@/lib/store'
 import gsap from 'gsap'
 import type { LenisRef } from 'lenis/react'
 import { ReactLenis, useLenis } from 'lenis/react'
@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react'
 
 export function Lenis() {
   const lenisRef = useRef<LenisRef>(null)
-  const pauseLenis = useStore((state) => state.pauseLenis)
+  const pauseLenis = useAppStore((state) => state.pauseLenis)
   const lenis = useLenis()
 
   useEffect(() => {

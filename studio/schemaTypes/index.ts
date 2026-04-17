@@ -1,8 +1,11 @@
 import article from './documents/article'
+import artist from './documents/artist'
+import format from './documents/format'
 import page from './documents/page'
-import project from './documents/project'
 import redirect from './documents/redirect'
+import role from './documents/role'
 import tag from './documents/tag'
+import videoProject from './documents/videoProject'
 import navExternal from './objects/navExternal'
 import navLinks from './objects/navLinks'
 import navPage from './objects/navPage'
@@ -40,8 +43,12 @@ export const schemaTypes = [
   home,
   blog,
   // Documents
-  project,
+  videoProject,
+  format,
+  artist,
+  role,
   article,
+  tag,
   page,
   redirect,
   // Objects
@@ -70,7 +77,6 @@ export const schemaTypes = [
   ptSlim,
   seo,
   socialLink,
-  tag,
 ]
 
 //export const singletons = []

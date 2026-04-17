@@ -1,9 +1,9 @@
 import Tag from '@/components/blog/Tag'
 import ImageBasic from '@/components/shared/ImageBasic'
 import SiteGrid from '@/components/shared/SiteGrid'
-import { blogDate, cn } from '@/lib/utils'
+import { blogDate, cn, imgSizesFormat } from '@/lib/utils'
 import { ArticleBySlugQueryResult, BlogPageQueryResult } from '@/sanity.types'
-import { imgSizesFormat, resolveHref } from '@/sanity/lib/utils'
+import { resolveHref } from '@/sanity/lib/utils'
 import Button from '../shared/Button'
 
 export default function PostHeader({

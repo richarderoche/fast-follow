@@ -7,7 +7,7 @@ import gsap from 'gsap'
 import { useEffect, useRef } from 'react'
 
 import NavLinks from '@/components/shared/NavLinks'
-import { useStore } from '@/lib/store'
+import { useAppStore } from '@/lib/store'
 import { NavItem } from '@/types'
 
 interface NavbarProps {
@@ -17,9 +17,9 @@ interface NavbarProps {
 export default function MobileNav(props: NavbarProps) {
   const { headerNav } = props
 
-  const isMobileNavOpen = useStore((state) => state.isMobileNavOpen)
-  const setIsMobileNavOpen = useStore((state) => state.setIsMobileNavOpen)
-  const setPauseLenis = useStore((state) => state.setPauseLenis)
+  const isMobileNavOpen = useAppStore((state) => state.isMobileNavOpen)
+  const setIsMobileNavOpen = useAppStore((state) => state.setIsMobileNavOpen)
+  const setPauseLenis = useAppStore((state) => state.setPauseLenis)
 
   const handleOpenMobileNav = () => {
     setIsMobileNavOpen(true)

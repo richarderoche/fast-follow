@@ -17,7 +17,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     dangerouslyAllowSVG: true,
-    remotePatterns: [{ protocol: 'https', hostname: 'cdn.sanity.io' }],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'cdn.sanity.io' },
+      { protocol: 'https', hostname: 'image.mux.com' },
+    ],
   },
   compiler: {
     removeConsole:

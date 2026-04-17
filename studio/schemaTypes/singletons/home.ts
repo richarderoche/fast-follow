@@ -1,5 +1,5 @@
-import { HomeIcon, StackCompactIcon } from '@sanity/icons'
-import { defineArrayMember, defineField, defineType } from 'sanity'
+import { HomeIcon } from '@sanity/icons'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'home',
@@ -20,25 +20,6 @@ export default defineType({
       type: 'string',
       placeholder: 'e.g. "is a commercial editorial house."',
       validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'showcaseProjects',
-      title: 'Showcase projects',
-      description:
-        'These are the projects that will appear first on your landing page.',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'reference',
-          to: [{ type: 'project' }],
-        }),
-      ],
-    }),
-    defineField({
-      name: 'pbSections',
-      title: 'Page Builder',
-      type: 'pbSections',
-      icon: StackCompactIcon,
     }),
   ],
   preview: {

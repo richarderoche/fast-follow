@@ -1,6 +1,6 @@
-import { blogDate } from '@/lib/utils'
+import { blogDate, imgSizesFormat } from '@/lib/utils'
 import { ArticleBySlugQueryResult, BlogPageQueryResult } from '@/sanity.types'
-import { imgSizesFormat, resolveHref } from '@/sanity/lib/utils'
+import { resolveHref } from '@/sanity/lib/utils'
 import Link from 'next/link'
 import ImageBasic from '../shared/ImageBasic'
 import Tag from './Tag'

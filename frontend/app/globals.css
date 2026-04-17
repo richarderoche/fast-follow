@@ -76,3 +76,8 @@ for container-relative rounded corners
 .corner {
   @apply overflow-hidden rounded-xs @xl/corner:rounded-sm;
 }
+
+mux-player {
+  --media-object-fit: cover;
+  --media-object-position: center;
+}

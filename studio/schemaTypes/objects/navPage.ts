@@ -21,7 +21,6 @@ export default defineType({
       to: [
         { type: 'home' },
         { type: 'page' },
-        { type: 'project' },
         { type: 'blog' },
         { type: 'article' },
       ],

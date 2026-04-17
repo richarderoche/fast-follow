@@ -116,6 +116,33 @@ export function getTrueSizes(outer: Size, inner?: Size) {
   return `${maxVw}${dVw ? dVw : ''}${tVw ? tVw : ''}${mVw}`
 }
 
+export function imgSizesFormat(
+  smWidth: number,
+  mdWidth?: number | null,
+  lgWidth?: number | null
+) {
+  const tiers: { min?: number; vw: number }[] = []
+  if (lgWidth != null) tiers.push({ min: 1024, vw: lgWidth })
+  if (mdWidth != null) tiers.push({ min: 768, vw: mdWidth })
+  tiers.push({ vw: smWidth })
+
+  while (tiers.length >= 2 && tiers[0].vw === tiers[1].vw) {
+    tiers.shift()
+  }
+
+  const topVw = tiers[0].vw
+  const maxWidthPx = SITE_MAX_WIDTH * (topVw / 100)
+  const maxTier = `(min-width: ${SITE_MAX_WIDTH}px) ${maxWidthPx}px`
+
+  const rest = tiers
+    .map((t) =>
+      t.min != null ? `(min-width: ${t.min}px) ${t.vw}vw` : `${t.vw}vw`
+    )
+    .join(', ')
+
+  return `${maxTier}, ${rest}`
+}
+
 export function getFirstSectionInfo(data: PageBuilderData) {
   if (!data) return { firstIsHero: false, firstPbSectionKey: '' }
   const firstPbSection = data?.pbSections?.find(
@@ -149,4 +176,17 @@ export function getMetadataRobots(noIndex: boolean) {
       noimageindex: noIndex,
     },
   }
+}
+
+export function cssRatio(ratio: string) {
+  return ratio?.replace(':', '/') ?? '16/9'
+}
+
+export function getIsPortrait(ratio: string) {
+  const [w, h] = ratio.split(':').map(Number)
+  return h > w
+}
+
+export function getMuxImageSrc(playbackId: string, time: number = 0) {
+  return `https://image.mux.com/${playbackId}/thumbnail.webp?time=${time}`
 }

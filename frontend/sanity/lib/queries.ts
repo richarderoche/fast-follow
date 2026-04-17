@@ -23,8 +23,7 @@ const link = `
 
 const tags = `
   "tags": tags[]->{
-    ...,
-    "slug": slug.current,
+    title,
   }
 `
 
@@ -105,17 +104,26 @@ const pb = `
 // QUERIES
 export const homePageQuery = defineQuery(`
   *[_type == "home"][0]{
+    subtitle,
+  }
+`)
+
+export const allProjectsQuery = defineQuery(`
+  *[_type == "videoProject"] | order(releaseDate desc) {
     ...,
-    ${pb},
-    showcaseProjects[]{
-      _key,
-      "project": @->{
-        _id,
-        _type,
-        coverImage,
-        "slug": slug.current,
-        title,
-      }
+    "video": videoAsset.asset->{
+      assetId,
+      playbackId,
+      'ratio': data.aspect_ratio,
+    },
+    "formats": formats[]->{
+      ...,
+    },
+    "artists": artists[]-> | order(coalesce(role[0]->priority, 0) desc, lastName asc, firstName asc){
+      ...,
+      "role": role[0]->title,
+      "rolePlural": role[0]->plural,
+      "name": firstName + " " + lastName,
     },
   }
 `)
@@ -134,12 +142,6 @@ export const metadataBySlugQuery = defineQuery(`
     title,
     "slug": slug.current,
     ${seo},
-  }
-`)
-
-export const projectBySlugQuery = defineQuery(`
-  *[_type == "project" && slug.current == $slug][0] {
-    ...,
   }
 `)
 

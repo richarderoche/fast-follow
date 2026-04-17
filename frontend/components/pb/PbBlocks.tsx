@@ -39,7 +39,7 @@ export default function PbBlocks({
   return (
     <div
       className={cn(
-        'column-blocks grid h-full',
+        'column-blocks grid h-full content-start',
         blockWidths.mobile,
         blockWidths.tablet,
         blockWidths.desktop,
