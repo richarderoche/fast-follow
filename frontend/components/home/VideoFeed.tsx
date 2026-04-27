@@ -1,5 +1,6 @@
 'use client'
 
+import VideoOverlay from '@/components/home/VideoOverlay'
 import VideoProject from '@/components/home/VideoProject'
 import {
   buildFilterOptions,
@@ -8,7 +9,7 @@ import {
   ProjectFilterState,
 } from '@/lib/projectFilters'
 import { useProjectsStore } from '@/lib/store'
-import { AllProjectsQueryResult } from '@/sanity.types'
+import type { AllProjectsQueryResult } from '@/sanity.types'
 import { useMemo, useState } from 'react'
 import SiteWidth from '../shared/SiteWidth'
 import FeedControls from './FeedControls'
@@ -20,6 +21,9 @@ export default function VideoFeed({
   projects: AllProjectsQueryResult
 }) {
   const [filtersOpen, setFiltersOpen] = useState(true)
+  const [overlayProject, setOverlayProject] = useState<
+    AllProjectsQueryResult[number] | null
+  >(null)
   const { selectedFormatId, selectedRoleId, selectedArtistId } =
     useProjectsStore()
 
@@ -50,6 +54,10 @@ export default function VideoFeed({
 
   return (
     <>
+      <VideoOverlay
+        project={overlayProject}
+        onClose={() => setOverlayProject(null)}
+      />
       {filtersOpen && (
         <Filters
           formatOptions={formatOptions}
@@ -65,7 +73,12 @@ export default function VideoFeed({
         ) : (
           <div className="grid grid-cols-6 gap-x-gut gap-y-gut-200">
             {filteredProjects.map((project, index) => (
-              <VideoProject key={project._id} project={project} index={index} />
+              <VideoProject
+                key={project._id}
+                project={project}
+                index={index}
+                onOpen={() => setOverlayProject(project)}
+              />
             ))}
           </div>
         )}

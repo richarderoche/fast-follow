@@ -91,7 +91,7 @@ export default function Filters({
                           type="button"
                           onClick={() => selectArtistFilter(a.id)}
                           className={cn(
-                            'flex w-fit items-center gap-6 relative z-1'
+                            'flex w-fit items-center gap-6 relative z-1 hover:scale-105 transition-all'
                           )}
                         >
                           <span

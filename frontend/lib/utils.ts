@@ -178,8 +178,8 @@ export function getMetadataRobots(noIndex: boolean) {
   }
 }
 
-export function cssRatio(ratio: string) {
-  return ratio?.replace(':', '/') ?? '16/9'
+export function cssRatio(ratio: string | null) {
+  return ratio ? ratio.replace(':', '/') : '16/9'
 }
 
 export function getIsPortrait(ratio: string) {
