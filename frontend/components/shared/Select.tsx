@@ -66,7 +66,10 @@ export default function Select({
           </BaseSelect.Icon>
         </BaseSelect.Trigger>
         <BaseSelect.Portal>
-          <BaseSelect.Positioner alignItemWithTrigger={false} className="z-10">
+          <BaseSelect.Positioner
+            alignItemWithTrigger={false}
+            className="z-1100"
+          >
             <BaseSelect.Popup
               className={cn(
                 'max-h-[min(18rem,40vh)] min-w-(--anchor-width) overflow-auto',

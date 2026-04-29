@@ -14,13 +14,14 @@ import { useMemo, useState } from 'react'
 import SiteWidth from '../shared/SiteWidth'
 import FeedControls from './FeedControls'
 import Filters from './Filters'
+import FiltersOverlay from './FiltersOverlay'
 
 export default function VideoFeed({
   projects,
 }: {
   projects: AllProjectsQueryResult
 }) {
-  const [filtersOpen, setFiltersOpen] = useState(true)
+  const [filtersOpen, setFiltersOpen] = useState(false)
   const [overlayProject, setOverlayProject] = useState<
     AllProjectsQueryResult[number] | null
   >(null)
@@ -52,22 +53,29 @@ export default function VideoFeed({
     [filteredProjects]
   )
 
+  const filtersProps = {
+    formatOptions,
+    roleOptions,
+    artistsByRole,
+    artistVideoCounts,
+  }
+
   return (
     <>
       <VideoOverlay
         project={overlayProject}
         onClose={() => setOverlayProject(null)}
       />
-      {filtersOpen && (
-        <Filters
-          formatOptions={formatOptions}
-          roleOptions={roleOptions}
-          artistsByRole={artistsByRole}
-          artistVideoCounts={artistVideoCounts}
-        />
-      )}
+      <FiltersOverlay
+        filtersOpen={filtersOpen}
+        onClose={() => setFiltersOpen(false)}
+      >
+        <Filters {...filtersProps} />
+      </FiltersOverlay>
+
+      <Filters {...filtersProps} />
+      <FeedControls onToggleFilters={() => setFiltersOpen((o) => !o)} />
       <SiteWidth>
-        <FeedControls onToggleFilters={() => setFiltersOpen((o) => !o)} />
         {filteredProjects.length === 0 ? (
           <p className="text-body-subtle py-gut-200">No projects match.</p>
         ) : (
