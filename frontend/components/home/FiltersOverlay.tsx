@@ -130,7 +130,7 @@ export default function FiltersOverlay({
         type="button"
         aria-label="Close filters"
         onClick={requestClose}
-        className="absolute inset-0 bg-black/78 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/78 backdrop-blur-xs"
       />
       <div
         ref={contentRef}

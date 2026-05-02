@@ -187,6 +187,6 @@ export function getIsPortrait(ratio: string) {
   return h > w
 }
 
-export function getMuxImageSrc(playbackId: string, time: number = 0) {
-  return `https://image.mux.com/${playbackId}/thumbnail.webp?time=${time}`
+export function getMuxImageSrc(playbackId: string, time?: number) {
+  return `https://image.mux.com/${playbackId}/thumbnail.webp?time=${time || 0}&width=1000`
 }

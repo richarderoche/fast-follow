@@ -22,8 +22,8 @@ export default function VideoProject({
   index: number
   onOpen?: () => void
 }) {
-  const { video, title, thumbnailtime } = project
-  const { playbackId, ratio } = video ?? {}
+  const { video, title } = project
+  const { playbackId, ratio, thumbTime } = video ?? {}
   const { thumbnailsPerRow = 2 } = useProjectsStore()
   const allCredits = getAllCredits(project)
   const trimmedCredits = allCredits.slice(0, 3)
@@ -57,7 +57,7 @@ export default function VideoProject({
         onClick={() => onOpen?.()}
       >
         <Image
-          src={getMuxImageSrc(playbackId, thumbnailtime)}
+          src={getMuxImageSrc(playbackId, thumbTime ?? 0)}
           alt={`${title} thumbnail`}
           fill={true}
           className="object-cover object-center group-hover:scale-105 motion-safe:transition-transform duration-300"
@@ -68,7 +68,7 @@ export default function VideoProject({
           )}
           priority={index < 4}
         />
-        <IconPlayVideo className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-60 text-black/50 group-hover:text-black/80 transition-colors duration-300" />
+        <IconPlayVideo className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-80 text-black/70 group-hover:text-black/80 transition-colors duration-300" />
       </button>
       <div
         className={cn(

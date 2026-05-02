@@ -114,6 +114,7 @@ export const allProjectsQuery = defineQuery(`
     "video": videoAsset.asset->{
       assetId,
       playbackId,
+      thumbTime,
       'ratio': data.aspect_ratio,
     },
     "artists": artists[]-> | order(coalesce(role[0]->priority, 0) desc, lastName asc, firstName asc){
@@ -126,21 +127,6 @@ export const allProjectsQuery = defineQuery(`
       title,
       priority,
     }
-  }
-`)
-
-export const allProjectIDsQuery = defineQuery(`
-  *[_type == "videoProject"] | order(releaseDate desc) {
-    _id,
-    "formats": formats[]->{
-      _id,
-    },
-    "artists": artists[]->{
-      _id,
-    },
-    "roles": artists[]->role[0]->{
-      _id,
-    },
   }
 `)
 

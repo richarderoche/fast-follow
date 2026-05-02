@@ -28,20 +28,14 @@ export default defineType({
     }),
     defineField({
       name: 'videoAsset',
-      title: 'Video File',
-      description: 'Must be less than 500 MB and 30 minutes in duration',
+      title: 'Video File and Thumbnail',
+      description:
+        'Choose thumbnail here after uploading. Must be less than 1 GB and 30 minutes in duration. If too large (typically MOV files), reencode: https://www.mux.com/docs/guides/minimize-processing-time',
       type: 'mux.video',
       options: {
-        maxAssetFileSize: 1024 * 1024 * 500, // 500 MB
+        maxAssetFileSize: 1024 * 1024 * 1024, // 1 GB
         maxAssetDuration: 30 * 60, // 30 minutes
       },
-    }),
-    defineField({
-      name: 'thumbnailtime',
-      title: 'Video Thumbnail Time (in seconds)',
-      description:
-        'The time in seconds to get the thumbnail from the video. Defaults to first frame if left blank.',
-      type: 'number',
     }),
     defineField({
       name: 'formats',
@@ -105,7 +99,7 @@ export default defineType({
       title: 'title',
       releaseDate: 'releaseDate',
       videoPlaybackId: 'videoAsset.asset.playbackId',
-      thumbnailTime: 'thumbnailtime',
+      thumbnailTime: 'videoAsset.asset.thumbTime',
       formats: 'formats.0.title',
       artistFirstName: 'artists.0.firstName',
       artistLastName: 'artists.0.lastName',

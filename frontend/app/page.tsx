@@ -13,7 +13,7 @@ export default async function IndexRoute() {
   const hasProjects = allProjects && allProjects.length > 0
   return (
     <PageWrapper showHeaderLogo={false}>
-      {false && (
+      {true && (
         <HomeIntro subtitle={subtitle || 'is a commercial editorial house.'} />
       )}
       {hasProjects && <VideoFeed projects={allProjects} />}
