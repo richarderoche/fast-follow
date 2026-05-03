@@ -66,3 +66,7 @@ Example: ts-size-24/32 → font-size = var(--gut) × (24÷36)
 .inline-link {
   @apply nice-underline transition-opacity hover:opacity-50;
 }
+
+.inline-link-stealth {
+  @apply nice-underline-stealth transition-all hover:decoration-body;
+}

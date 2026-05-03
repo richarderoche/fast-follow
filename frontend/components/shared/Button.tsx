@@ -4,17 +4,33 @@ import { cn } from '@/lib/utils'
 import { resolveHref } from '@/sanity/lib/utils'
 import { NavItem } from '@/types'
 import { PiFunnelBold } from 'react-icons/pi'
+import IconCloseSmall from '../icons/IconCloseSmall'
 
-interface ButtonProps {
+type ButtonOwnProps = {
   text?: string
   path?: string
-  onClick?: () => void
   navItem?: NavItem
-  className?: string
   download?: boolean
-  icon?: 'filter' | 'none'
-  disabled?: boolean
+  icon?: 'filter' | 'close' | 'close-spacer' | 'none'
+  outline?: boolean
 }
+
+/**
+ * Handlers and globals typed for `HTMLElement` so they apply to both `<button>` and `<a>`
+ */
+type InteractivePassthroughProps = Omit<
+  React.HTMLAttributes<HTMLElement>,
+  keyof ButtonOwnProps | 'children'
+>
+
+type ButtonOnlyProps = Pick<
+  React.ComponentPropsWithoutRef<'button'>,
+  'disabled' | 'type'
+>
+
+export type ButtonProps = ButtonOwnProps &
+  InteractivePassthroughProps &
+  ButtonOnlyProps
 
 export default function Button(props: ButtonProps) {
   const {
@@ -26,6 +42,8 @@ export default function Button(props: ButtonProps) {
     download,
     icon = 'none',
     disabled = false,
+    outline = false,
+    ...rest
   } = props
   let href: string | undefined = ''
   let buttonText: string | undefined = ''
@@ -41,7 +59,8 @@ export default function Button(props: ButtonProps) {
 
   const isExternal = href?.startsWith('http')
   const buttonClasses = cn(
-    'flex w-fit items-center gap-[.2em] py-[.25em] px-[.6em] rounded-full light-theme transition-colors ts-h5',
+    'flex w-fit items-center py-[.25em] px-[.6em] rounded-full  transition-colors ts-h5',
+    outline ? 'border' : 'light-theme',
     disabled && 'opacity-50 pointer-events-none',
     className
   )
@@ -55,6 +74,7 @@ export default function Button(props: ButtonProps) {
         className={buttonClasses}
         download={download}
         onClick={onClick}
+        {...rest}
       >
         <ButtonContent text={buttonText} icon={icon} />
       </Link>
@@ -62,7 +82,13 @@ export default function Button(props: ButtonProps) {
   }
 
   return (
-    <button className={buttonClasses} onClick={onClick} disabled={disabled}>
+    <button
+      type="button"
+      className={buttonClasses}
+      onClick={onClick}
+      disabled={disabled}
+      {...rest}
+    >
       <ButtonContent text={buttonText} icon={icon} />
     </button>
   )
@@ -73,13 +99,28 @@ const ButtonContent = ({
   icon,
 }: {
   text: string
-  icon: 'filter' | 'none'
+  icon: 'filter' | 'close' | 'close-spacer' | 'none'
 }) => {
   return (
     <>
-      <span className="leading-none whitespace-nowrap">{text}</span>
+      <span
+        className={cn(
+          'leading-none whitespace-nowrap',
+          icon === 'close-spacer' && 'px-[.35em]'
+        )}
+      >
+        {text}
+      </span>
       {icon === 'filter' && (
-        <PiFunnelBold className="size-[.8em] relative -top-[.02em]" />
+        <PiFunnelBold className="size-[.8em] relative -top-[.02em] ml-[.2em]" />
+      )}
+      {(icon === 'close' || icon === 'close-spacer') && (
+        <IconCloseSmall
+          className={cn(
+            icon === 'close' && 'size-[.5em] ml-[.2em]',
+            icon === 'close-spacer' && 'size-0 ml-0'
+          )}
+        />
       )}
     </>
   )

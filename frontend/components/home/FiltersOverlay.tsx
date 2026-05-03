@@ -134,7 +134,7 @@ export default function FiltersOverlay({
       />
       <div
         ref={contentRef}
-        className="overlay-content relative z-10 bg-bg border-b border-body max-h-dvh overflow-y-auto"
+        className="overlay-content relative z-10 bg-bg border-b border-divider max-h-dvh overflow-y-auto"
       >
         <SiteWidth className="flex justify-end pt-gut sticky top-0">
           <button

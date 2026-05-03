@@ -11,7 +11,7 @@
 @utility nice-underline-stealth {
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.125em;
+  text-underline-offset: 0.15em;
   text-decoration-color: transparent;
 }
 

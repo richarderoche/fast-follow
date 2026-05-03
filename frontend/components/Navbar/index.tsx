@@ -3,6 +3,8 @@ import { settingsQuery } from '@/sanity/lib/queries'
 import type { NavItem } from '@/types'
 import NavLinks from '../shared/NavLinks'
 import SiteWidth from '../shared/SiteWidth'
+import Contact from './Contact'
+import DesktopContact from './DesktopContact'
 import HeaderLogo from './HeaderLogo'
 import MobileNav from './MobileNav'
 import SkipLink from './SkipLink'
@@ -30,11 +32,9 @@ export default async function Navbar() {
               liActiveClasses="bg-body text-bg pointer-events-none"
               linkClasses="px-[.8em] py-[.25em] flex w-fit items-center"
             />
-            <div className="max-lg:hidden flex flex-wrap items-center gap-x-1 bg-body rounded-full p-1 pointer-events-auto">
-              <button className="px-[.8em] py-[.25em] flex w-fit items-center bg-bg rounded-full ts-h5">
-                <span>Contact</span>
-              </button>
-            </div>
+            <DesktopContact>
+              <Contact data={data} />
+            </DesktopContact>
             {/* Mobile Header Menu */}
             <MobileNav headerNav={headerNav} />
           </nav>

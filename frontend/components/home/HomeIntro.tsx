@@ -4,7 +4,6 @@ import { useSize } from '@/lib/useSize'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
-import Link from 'next/link'
 import { useCallback, useEffect, useEffectEvent, useRef, useState } from 'react'
 
 export default function HomeIntro({ subtitle }: { subtitle: string }) {
@@ -95,10 +94,10 @@ export default function HomeIntro({ subtitle }: { subtitle: string }) {
             style={{ transform: `translateY(${headerLogoTop}px)` }}
           >
             <div className="home-intro-text text-balance origin-top-left">
-              <Link id="intro-logo" className="pointer-events-auto" href="/">
+              <span id="intro-logo" className="pointer-events-default">
                 <span className="font-bold">Fast</span>
                 <span>Follow</span>
-              </Link>
+              </span>
               <span className="home-intro-subtitle font-bold text-display-subtle">
                 {' '}
                 {subtitle}

@@ -1,4 +1,5 @@
 import { CogIcon } from '@sanity/icons'
+import { User } from 'lucide-react'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
@@ -32,8 +33,65 @@ export default defineType({
       group: 'header',
     }),
     defineField({
+      name: 'contactGeneral',
+      title: 'Contact Main Email',
+      type: 'string',
+      group: 'header',
+      placeholder: 'info@fastfollow.co',
+    }),
+    defineField({
+      name: 'contactTeam',
+      title: 'Contact Team Members',
+      type: 'array',
+      group: 'header',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'role',
+              title: 'Role',
+              type: 'string',
+            }),
+            defineField({
+              name: 'email',
+              title: 'Email',
+              type: 'string',
+            }),
+            defineField({
+              name: 'phone',
+              title: 'Phone',
+              type: 'string',
+            }),
+          ],
+          preview: {
+            select: {
+              name: 'name',
+              role: 'role',
+              email: 'email',
+              phone: 'phone',
+            },
+            prepare({ name, role, email, phone }) {
+              const details = [role, email, phone].filter(Boolean).join(' / ')
+              return {
+                title: name,
+                subtitle: details,
+                media: User,
+              }
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
       name: 'socialIcons',
-      title: 'Social Links',
+      title: 'Footer Social Links',
       type: 'array',
       group: 'footer',
       of: [
