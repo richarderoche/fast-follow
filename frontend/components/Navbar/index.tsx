@@ -36,7 +36,7 @@ export default async function Navbar() {
               <Contact data={data} />
             </DesktopContact>
             {/* Mobile Header Menu */}
-            <MobileNav headerNav={headerNav} />
+            <MobileNav data={data} />
           </nav>
         )}
       </SiteWidth>

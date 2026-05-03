@@ -19,7 +19,7 @@ export default function Contact({ data }: { data: SettingsQueryResult }) {
   }
 
   return (
-    <div className="mt-gut-200 flex flex-col gap-gut px-gut">
+    <div className="lg:mt-gut-200 flex flex-col gap-gut lg:px-gut">
       {contactGeneral && (
         <div className="corner-container">
           <button

@@ -15,6 +15,7 @@ export default function DesktopContact({
 }) {
   const [isOpen, setIsOpen] = useState(false)
   const backdropRef = useRef<HTMLButtonElement>(null)
+  const navRef = useRef<HTMLDivElement>(null)
   const setPauseLenis = useAppStore((state) => state.setPauseLenis)
 
   const handleOpen = () => {
@@ -48,8 +49,6 @@ export default function DesktopContact({
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [isOpen, setIsOpen, setPauseLenis])
-
-  const navRef = useRef<HTMLDivElement>(null)
 
   useGSAP(
     () => {
