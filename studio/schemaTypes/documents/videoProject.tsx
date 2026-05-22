@@ -135,4 +135,21 @@ export default defineType({
       }
     },
   },
+  orderings: [
+    {
+      title: 'Release Date',
+      name: 'releaseDateDesc',
+      by: [{ field: 'releaseDate', direction: 'desc' }],
+    },
+    {
+      title: 'Title (A-Z)',
+      name: 'titleAsc',
+      by: [{ field: 'title', direction: 'asc' }],
+    },
+    {
+      title: 'Title (Z-A)',
+      name: 'titleDesc',
+      by: [{ field: 'title', direction: 'desc' }],
+    },
+  ],
 })

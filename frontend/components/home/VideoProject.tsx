@@ -46,7 +46,7 @@ export default function VideoProject({
     >
       <button
         className={cn(
-          'w-full corner relative group cursor-pointer',
+          'w-full corner relative group cursor-pointer border border-gray-800',
           portaitLayout && 'lg:col-span-2'
         )}
         style={{

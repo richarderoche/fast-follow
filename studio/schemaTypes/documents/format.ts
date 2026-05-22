@@ -32,4 +32,21 @@ export default defineType({
       return { title: title, subtitle: `Priority: ${priority}`, media: Ratio }
     },
   },
+  orderings: [
+    {
+      title: 'Priority',
+      name: 'priorityDesc',
+      by: [{ field: 'priority', direction: 'desc' }],
+    },
+    {
+      title: 'Title (A-Z)',
+      name: 'titleAsc',
+      by: [{ field: 'title', direction: 'asc' }],
+    },
+    {
+      title: 'Title (Z-A)',
+      name: 'titleDesc',
+      by: [{ field: 'title', direction: 'desc' }],
+    },
+  ],
 })

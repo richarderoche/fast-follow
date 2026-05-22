@@ -28,6 +28,7 @@
     "@sanity/client": "^7.20.0",
     "@sanity/image-url": "2.1.1",
     "@sanity/util": "^5.23.0",
+    "@videojs/react": "^10.0.0-beta.24",
     "classnames": "2.5.1",
     "clsx": "^2.1.1",
     "date-fns": "4.1.0",

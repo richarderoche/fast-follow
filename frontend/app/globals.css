@@ -81,3 +81,43 @@ mux-player {
   --media-object-fit: cover;
   --media-object-position: center;
 }
+
+/* Video.js overlay: flat edges, contain video (Safari flex + % height) */
+.videojs-overlay-player.media-default-skin {
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 0;
+  outline: none;
+}
+
+.videojs-overlay-player.media-default-skin:focus-visible {
+  outline: none;
+}
+
+.videojs-overlay-player.media-default-skin video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+.videojs-overlay-player.media-default-skin .media-surface {
+  box-shadow:
+    0 1px 3px 0 var(--media-surface-shadow-color),
+    0 1px 2px -1px var(--media-surface-shadow-color);
+}
+
+.videojs-overlay-player.media-default-skin .media-surface::after {
+  display: none;
+}
+
+/* No gradient scrim when controls show on hover */
+.videojs-overlay-player.media-default-skin .media-overlay {
+  display: none;
+}

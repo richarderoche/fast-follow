@@ -8,7 +8,7 @@ import { FocusTrap } from 'focus-trap-react'
 import gsap from 'gsap'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import IconCloseSmall from '../icons/IconCloseSmall'
-import Video from '../shared/Video'
+import VideoJS from '../shared/VideoJS'
 import { getAllCredits } from './getAllCredits'
 import { Credit } from './VideoProject'
 
@@ -151,20 +151,19 @@ export default function VideoOverlay({
               <IconCloseSmall className="size-10" />
             </button>
           </div>
-          <div ref={videoSpaceRef} className="grow relative">
+          <div ref={videoSpaceRef} className="grow relative min-h-0">
             <div className="absolute inset-0 flex items-center justify-center corner-container">
               <div
                 className={cn(
-                  'relative corner overflow-hidden max-w-full max-h-full',
+                  'relative overflow-hidden max-w-full max-h-full',
                   isWidthLimited ? 'w-full h-auto' : 'w-auto h-full'
                 )}
                 style={{
                   aspectRatio: cssRatio(activeRatioStr),
                 }}
               >
-                <Video
+                <VideoJS
                   playbackId={resolved.video?.playbackId ?? undefined}
-                  className="absolute inset-0 h-full w-full object-contain"
                   useManualIsInView
                   manualIsInView={playing}
                   disablePoster
