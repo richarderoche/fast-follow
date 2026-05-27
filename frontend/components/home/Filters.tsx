@@ -42,6 +42,8 @@ export default function Filters({
     [formatOptions]
   )
 
+  const showCounts = selectedFormatId !== null
+
   return (
     <div className="pt-header pb-gut">
       <SiteWidth>
@@ -103,15 +105,24 @@ export default function Filters({
                           >
                             ×
                           </span>
-                          <span className="ts-h3-caps">{a.name}</span>
                           <span
                             className={cn(
-                              'ts-count p-2 min-w-[2.6em] rounded-full border',
-                              count === 0 && 'opacity-30'
+                              'ts-h3-caps',
+                              showCounts && count === 0 && 'opacity-50'
                             )}
                           >
-                            {count}
+                            {a.name}
                           </span>
+                          {showCounts && (
+                            <span
+                              className={cn(
+                                'ts-count p-2 min-w-[2.6em] rounded-full border',
+                                count === 0 && 'opacity-0'
+                              )}
+                            >
+                              {count}
+                            </span>
+                          )}
                           <div
                             className={cn(
                               'absolute -inset-y-gut-25 -inset-x-gut-50 rounded-full bg-bg-subtle -z-1 transition-all',
