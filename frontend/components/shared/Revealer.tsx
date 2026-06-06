@@ -24,7 +24,6 @@ export default function Revealer({
 }: RevealerProps) {
   const ref = useRef<HTMLDivElement>(null)
   const reducedMotion = usePrefersReducedMotion()
-  const distance = reducedMotion || direction === 'fade-only' ? 0 : 40
 
   useGSAP(
     () => {
@@ -32,6 +31,8 @@ export default function Revealer({
 
       const el = ref.current
       if (!el) return
+
+      const distance = reducedMotion || direction === 'fade-only' ? 0 : 40
 
       const fromMove =
         direction === 'fade-right' ? { x: -distance } : { y: distance }
@@ -50,7 +51,7 @@ export default function Revealer({
         }
       )
     },
-    { scope: ref, dependencies: [direction, distance] }
+    { scope: ref, dependencies: [direction, reducedMotion] }
   )
 
   return (
