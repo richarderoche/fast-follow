@@ -31,7 +31,7 @@ export const useAppStore = create<AppStore>((set) => ({
 }))
 
 export const useProjectsStore = create<ProjectsStore>((set) => ({
-  thumbnailsPerRow: 2,
+  thumbnailsPerRow: 3,
   selectedFormatId: null,
   selectedRoleId: null,
   selectedArtistId: null,
