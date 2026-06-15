@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
+import { useLenis } from 'lenis/react'
 import { useIsPresentationTool } from 'next-sanity/hooks'
 import { useCallback, useEffect, useEffectEvent, useRef, useState } from 'react'
 
@@ -13,6 +14,7 @@ export default function HomeIntro({ subtitle }: { subtitle: string }) {
   const sanityEditing = useSanityVisualEditing()
   const subtitleDataSanity = sanityEditing?.getDataAttribute(['subtitle'])
   const isPresentationTool = useIsPresentationTool()
+  const lenis = useLenis()
   const [headerLogoTop, setHeaderLogoTop] = useState(0)
   const [setSizeNode, containerSize] = useSize()
   const introRootRef = useRef<HTMLDivElement>(null)
@@ -48,6 +50,15 @@ export default function HomeIntro({ subtitle }: { subtitle: string }) {
       introLogo.getBoundingClientRect().width
     handleSetlogoRatio(scaleDifference)
   }, [containerWidth])
+
+  useEffect(() => {
+    const onResize = () => {
+      lenis?.scrollTo(0, { immediate: true })
+      ScrollTrigger.refresh(true)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [lenis])
 
   gsap.registerPlugin(ScrollTrigger)
 
