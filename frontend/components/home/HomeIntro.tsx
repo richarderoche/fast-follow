@@ -1,12 +1,18 @@
 'use client'
+import { useSanityVisualEditing } from '@/components/pb/SanityVisualEditingContext'
 import SiteWidth from '@/components/shared/SiteWidth'
 import { useSize } from '@/lib/useSize'
+import { cn } from '@/lib/utils'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
+import { useIsPresentationTool } from 'next-sanity/hooks'
 import { useCallback, useEffect, useEffectEvent, useRef, useState } from 'react'
 
 export default function HomeIntro({ subtitle }: { subtitle: string }) {
+  const sanityEditing = useSanityVisualEditing()
+  const subtitleDataSanity = sanityEditing?.getDataAttribute(['subtitle'])
+  const isPresentationTool = useIsPresentationTool()
   const [headerLogoTop, setHeaderLogoTop] = useState(0)
   const [setSizeNode, containerSize] = useSize()
   const introRootRef = useRef<HTMLDivElement>(null)
@@ -48,6 +54,14 @@ export default function HomeIntro({ subtitle }: { subtitle: string }) {
   useGSAP(
     () => {
       if (!introRootRef.current) return
+
+      if (isPresentationTool) {
+        gsap.set(introRootRef.current, { opacity: 1 })
+        gsap.set('.home-intro-text', { scale: 1, y: 0 })
+        gsap.set('.home-intro-subtitle', { opacity: 1 })
+        return
+      }
+
       gsap.set('.home-intro-text', { scale: 1, y: '100%' })
       gsap.set('.home-intro-subtitle', { opacity: 1 })
       gsap.set(introRootRef.current, { opacity: 1 })
@@ -77,14 +91,18 @@ export default function HomeIntro({ subtitle }: { subtitle: string }) {
     },
     {
       scope: introRootRef,
-      dependencies: [headerLogoTop, logoRatio],
-      revertOnUpdate: true,
+      dependencies: [headerLogoTop, logoRatio, isPresentationTool],
+      revertOnUpdate: false,
     }
   )
 
   return (
     <div
-      className="ts-header-logo-h1 h-[8em] md:h-[5em] mb-gut opacity-0"
+      data-sanity={subtitleDataSanity}
+      className={cn(
+        'ts-header-logo-h1 h-[8em] md:h-[5em] mb-gut',
+        isPresentationTool !== true && 'opacity-0'
+      )}
       ref={setIntroRootRef}
     >
       <div className="fixed top-0 left-0 w-full z-10 pointer-events-none">

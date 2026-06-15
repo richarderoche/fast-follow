@@ -4,6 +4,10 @@ import { PbColSettings, PbGridDouble } from '@/sanity.types'
 import SiteGrid from '../shared/SiteGrid'
 import SiteWidth from '../shared/SiteWidth'
 import GridCol from './GridCol'
+import {
+  SanityVisualEditingPath,
+  useSanityDataAttribute,
+} from './SanityVisualEditingContext'
 
 export default function SectionGridDouble({
   section,
@@ -12,6 +16,7 @@ export default function SectionGridDouble({
   section: PbGridDouble
   sectionKey: string
 }) {
+  const { path: sectionPath } = useSanityDataAttribute()
   const {
     rowWidth,
     columnOne,
@@ -66,30 +71,32 @@ export default function SectionGridDouble({
             yAlignment={yAlignment}
           >
             {columnOne && columnOneBlocks.length > 0 && (
-              <GridCol
-                col={{
-                  _key: sectionKey + 'columnOne',
-                  pbBlocks: columnOneBlocks,
-                  revealEffect: columnOne.revealEffect,
-                  spaceBetweenBlocks: columnOne.spaceBetweenBlocks,
-                  columnSettings: columnOneSettings,
-                }}
-                outerSettings={outerSettings}
-                cardMode={columnOne.cardMode}
-              />
+              <SanityVisualEditingPath path={[...sectionPath, 'columnOne']}>
+                <GridCol
+                  col={{
+                    _key: sectionKey + 'columnOne',
+                    pbBlocks: columnOneBlocks,
+                    revealEffect: columnOne.revealEffect,
+                    spaceBetweenBlocks: columnOne.spaceBetweenBlocks,
+                    columnSettings: columnOneSettings,
+                  }}
+                  outerSettings={outerSettings}
+                />
+              </SanityVisualEditingPath>
             )}
             {columnTwo && columnTwoBlocks.length > 0 && (
-              <GridCol
-                col={{
-                  _key: sectionKey + 'columnTwo',
-                  pbBlocks: columnTwoBlocks,
-                  revealEffect: columnTwo.revealEffect,
-                  spaceBetweenBlocks: columnTwo.spaceBetweenBlocks,
-                  columnSettings: columnTwoSettings,
-                }}
-                outerSettings={outerSettings}
-                cardMode={columnTwo.cardMode}
-              />
+              <SanityVisualEditingPath path={[...sectionPath, 'columnTwo']}>
+                <GridCol
+                  col={{
+                    _key: sectionKey + 'columnTwo',
+                    pbBlocks: columnTwoBlocks,
+                    revealEffect: columnTwo.revealEffect,
+                    spaceBetweenBlocks: columnTwo.spaceBetweenBlocks,
+                    columnSettings: columnTwoSettings,
+                  }}
+                  outerSettings={outerSettings}
+                />
+              </SanityVisualEditingPath>
             )}
           </SiteGrid>
         </div>

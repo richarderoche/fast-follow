@@ -1,6 +1,7 @@
 'use client'
 
 import { getAllCredits } from '@/components/home/getAllCredits'
+import { documentDataAttribute } from '@/components/pb/SanityVisualEditingContext'
 import { useProjectsStore } from '@/lib/store'
 import {
   cn,
@@ -10,6 +11,7 @@ import {
   imgSizesFormat,
 } from '@/lib/utils'
 import { AllProjectsQueryResult } from '@/sanity.types'
+import { studioUrl } from '@/sanity/lib/api'
 import Image from 'next/image'
 import IconPlayVideo from '../icons/IconPlayVideo'
 
@@ -24,7 +26,7 @@ export default function VideoProject({
 }) {
   const { video, title } = project
   const { playbackId, ratio, thumbTime } = video ?? {}
-  const { thumbnailsPerRow = 2 } = useProjectsStore()
+  const { thumbnailsPerRow = 3 } = useProjectsStore()
   const allCredits = getAllCredits(project)
   const trimmedCredits = allCredits.slice(0, 3)
   const isPortrait = getIsPortrait(ratio ?? '16:9')
@@ -71,6 +73,12 @@ export default function VideoProject({
         <IconPlayVideo className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-80 text-black/70 group-hover:text-black/80 transition-colors duration-300" />
       </button>
       <div
+        data-sanity={documentDataAttribute(
+          studioUrl,
+          project._id,
+          project._type,
+          ['videoAsset']
+        )}
         className={cn(
           'mt-gut-75 flex flex-col gap-gut-50',
           displayOriginalRatio &&

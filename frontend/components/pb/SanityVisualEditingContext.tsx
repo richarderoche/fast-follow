@@ -100,6 +100,18 @@ export function useSanityVisualEditing(): SanityVisualEditingValue | null {
   return useContext(SanityVisualEditingContext)
 }
 
+/** Build data-sanity for a document outside the current visual-editing path (e.g. video projects). */
+export function documentDataAttribute(
+  baseUrl: string,
+  documentId: string,
+  documentType: string,
+  path: SanityPathSegment[]
+): string | undefined {
+  return createDataAttribute({ baseUrl, id: documentId, type: documentType })(
+    path
+  )
+}
+
 /** Hook that returns getDataAttribute; throws if used outside provider (for page builder only). */
 export function useSanityDataAttribute(): SanityVisualEditingValue {
   const ctx = useContext(SanityVisualEditingContext)

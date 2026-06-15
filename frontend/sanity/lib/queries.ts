@@ -104,6 +104,8 @@ const pb = `
 // QUERIES
 export const homePageQuery = defineQuery(`
   *[_type == "home"][0]{
+    _id,
+    _type,
     subtitle,
   }
 `)
